@@ -1,0 +1,26 @@
+{
+  "name": "cenfosoft-civisguard",
+  "version": "1.0.0",
+  "description": "Curso: **PSWE-04 - Diseño de Sistemas de Software** Sección: **Maestría en Ingeniería de Software** — Periodo Q02 2026   Docente Facilitador: **M.Sc. Kevin A. Hernández Rostrán**",
+  "homepage": "https://github.com/allancascante/cenfosoft-civisguard#readme",
+  "bugs": {
+    "url": "https://github.com/allancascante/cenfosoft-civisguard/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allancascante/cenfosoft-civisguard.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "adr": "^1.5.2"
+  }
+}
