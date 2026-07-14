@@ -212,7 +212,162 @@ Mapeo de los Bloques de Construcción a Infraestructura
 
 # Decisiones de Diseño
 
+Las decisiones descritas en esta sección resumen las principales elecciones arquitectónicas de **CivisGuard Analytics**. Cada decisión deberá formalizarse posteriormente mediante un **ADR** (*Architecture Decision Record*) que documente:
+
+- El contexto.
+- Las alternativas consideradas.
+- La decisión tomada.
+- Las consecuencias.
+- Los riesgos aceptados.
+
+El diseño parte de que ningún mecanismo resuelve simultáneamente la disponibilidad, consistencia, rendimiento, simplicidad y escalabilidad. Por ello, la arquitectura divide el sistema según la criticidad y naturaleza de cada carga, haciendo explícitos los *trade-offs*.
+
+Esta separación sigue el principio de distinguir entre sistemas operacionales, sistemas analíticos, sistemas de registro y datos derivados.
+
+---
+
+## DD-01: Arquitectura híbrida orientada a eventos
+
+CivisGuard utilizará una arquitectura orientada a eventos como mecanismo principal de integración entre sus componentes.
+
+Las siguientes acciones producirán eventos de dominio persistentes:
+
+- Registro de un incidente.
+- Clasificación de un incidente.
+- Despacho de recursos.
+- Escalamiento.
+- Cambio de estado.
+- Cierre del incidente.
+- Activación de protocolos nacionales.
+
+Las operaciones que requieren una respuesta inmediata al usuario, como registrar, clasificar o confirmar un despacho, se ejecutarán mediante **APIs síncronas**.
+
+Después de validar y persistir la operación, sus consecuencias se distribuirán de forma asíncrona mediante el bus de eventos.
+
+Esta combinación evita depender de cadenas extensas de llamadas síncronas entre instituciones y permite que los consumidores procesen la información a su propio ritmo.
+
+---
+
+## DD-02: Separación entre el plano operacional y el plano analítico
+
+La plataforma separará explícitamente dos tipos de procesamiento:
+
+- **Plano operacional:** registro, clasificación, despacho, coordinación y actualización del estado de los incidentes.
+- **Plano analítico:** mapas de calor, reportes, análisis histórico e inteligencia preventiva territorial.
+
+El plano operacional contendrá los sistemas de registro autoritativos. El plano analítico se construirá mediante proyecciones y datos derivados generados a partir de los eventos operacionales.
+
+Se aplicará una variante del patrón **CQRS** (*Command Query Responsibility Segregation*):
+
+- El modelo de escritura aplicará las reglas de negocio y las restricciones de consistencia.
+- Los modelos de lectura estarán optimizados para consultas geográficas, reportes y análisis histórico.
+- Las consultas analíticas no se ejecutarán directamente sobre las bases de datos transaccionales.
+
+Esta separación evita que una consulta histórica costosa afecte la capacidad de registrar o despachar incidentes.
+
+Como consecuencia, se introduce duplicación controlada de información y consistencia eventual entre el estado operacional y las vistas analíticas.
+
+El término **ETL** se reservará para la preparación y transformación de información analítica. La propagación operacional entre servicios se realizará mediante eventos de dominio y no mediante procesos ETL.
+
+---
+
+## DD-04: Bitácora inmutable con verificación criptográfica
+
+La bitácora operativa será un registro de solo anexado. Ningún usuario, administrador o servicio podrá modificar o eliminar eventos previamente confirmados.
+
+Cada entrada incluirá como mínimo:
+
+- Identificador del evento.
+- Identificador del incidente.
+- Identidad del funcionario o servicio.
+- Institución.
+- Acción realizada.
+- Justificación.
+- Fecha y hora en UTC.
+- Identificador de correlación.
+- Versión del agregado.
+- Hash de integridad.
+
+Para detectar alteraciones se utilizarán los siguientes mecanismos:
+
+- Encadenamiento de hashes.
+- Firma periódica de bloques.
+- Almacenamiento con políticas de retención inmutable.
+
+No se propone utilizar una cadena de bloques pública o distribuida, debido a su complejidad y al costo operacional innecesario para este contexto.
+
+La bitácora almacenará metadatos de auditoría y referencias a información sensible. No se duplicarán indiscriminadamente expedientes clínicos ni información táctica dentro del registro inmutable.
+
+---
+
+## DD-05: Entrega al menos una vez e idempotencia
+
+El bus de eventos utilizará una semántica de entrega **al menos una vez**.
+
+Debido a reintentos, fallos de red o recuperación de consumidores, un mismo evento podría recibirse más de una vez.
+
+Todos los consumidores deberán ser idempotentes mediante:
+
+- Identificadores únicos de eventos.
+- Control de eventos procesados.
+- Restricciones de unicidad.
+- Versiones de agregados.
+- Claves de idempotencia para comandos.
+- Operaciones transaccionales en cada servicio.
+
+No se asumirá una garantía de procesamiento **exactamente una vez** de extremo a extremo entre sistemas distribuidos.
+
+Para evitar escrituras duales inconsistentes entre una base de datos transaccional y el bus de eventos, se aplicará el patrón **Transactional Outbox**.
+
+La modificación del dominio y la inserción del mensaje de salida se realizarán dentro de la misma transacción local.
+
+Este patrón permite desacoplar el modelo interno de los contratos públicos de eventos y reducir las inconsistencias entre las bases de datos y los flujos de eventos.
+
 # Requerimientos de Calidad
+
+Los requerimientos de calidad determinan cómo debe comportarse CivisGuard bajo condiciones normales, picos de demanda, fallos parciales, conectividad degradada y cambios futuros.
+
+La confiabilidad no significa que ningún componente falle, sino que el sistema continúe prestando su servicio cuando ocurran fallos previsibles. Además de la confiabilidad, los atributos prioritarios para CivisGuard son rendimiento, seguridad, integridad, escalabilidad, operabilidad, portabilidad y capacidad de evolución.
+
+Calidad de CivisGuard Analytics
+├── Confiabilidad
+│   ├── Disponibilidad 24/7/365
+│   ├── Tolerancia a fallos
+│   ├── Durabilidad de datos
+│   └── Recuperación
+├── Rendimiento
+│   ├── Despacho dentro del SLA
+│   ├── Propagación de eventos
+│   ├── Actualización del mapa
+│   └── Capacidad en picos de demanda
+├── Seguridad y privacidad
+│   ├── Autenticación
+│   ├── Segregación institucional
+│   ├── Mínimo privilegio
+│   └── Protección de datos sensibles
+├── Integridad y auditabilidad
+│   ├── Bitácora inmutable
+│   ├── Trazabilidad de extremo a extremo
+│   ├── Detección de alteraciones
+│   └── Exportación histórica
+├── Resiliencia de conectividad
+│   ├── Operación offline
+│   ├── Sincronización
+│   ├── Deduplicación
+│   └── Resolución de conflictos
+├── Escalabilidad
+│   ├── Usuarios concurrentes
+│   ├── Incidentes por minuto
+│   └── Expansión nacional
+├── Mantenibilidad
+│   ├── Operabilidad
+│   ├── Simplicidad
+│   ├── Observabilidad
+│   └── Evolución de contratos
+└── Portabilidad
+    ├── Independencia de proveedor
+    ├── Infraestructura reproducible
+    └── Uso de estándares abiertos
 
 ## Vista General de Requerimientos de Calidad
 
