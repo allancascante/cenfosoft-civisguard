@@ -1,0 +1,603 @@
+<mxfile host="app.diagrams.net" pages="2">
+  <diagram name="C4 Nivel 1" id="KlW0apmKtK7-6CqX298h">
+    <mxGraphModel dx="3084" dy="-1807" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <object placeholders="1" c4Name="CivisGuard Analytics Platform" c4Type="Software System" c4Description="Plataforma central de análisis, despacho, monitoreo y coordinación de emergencias" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" link="data:page/id,6ZnvrQZJkhZQ5EsFmywb" id="0AwdP0as4XzpQiit8Gjk-1">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#1168BD;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#1168BD;metaEdit=1;metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];" vertex="1">
+            <mxGeometry height="130" width="210" x="610" y="4025" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="0AwdP0as4XzpQiit8Gjk-2" connectable="0" parent="1" style="group" value="" vertex="1">
+          <mxGeometry height="220" width="696" x="240" y="5050" as="geometry" />
+        </mxCell>
+        <mxCell id="0AwdP0as4XzpQiit8Gjk-3" parent="0AwdP0as4XzpQiit8Gjk-2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666666;dashed=1;dashPattern=1 2;fontColor=#666666;" value="" vertex="1">
+          <mxGeometry height="220" width="696" as="geometry" />
+        </mxCell>
+        <mxCell id="0AwdP0as4XzpQiit8Gjk-4" parent="0AwdP0as4XzpQiit8Gjk-2" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontColor=#666666;" value="Legend" vertex="1">
+          <mxGeometry height="20" width="40" x="19" y="10" as="geometry" />
+        </mxCell>
+        <object placeholders="1" c4Name="name" c4Type="Person" c4Description="Description" label="&lt;b style=&quot;font-size: 9px;&quot;&gt;%c4Name%&lt;/b&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;[%c4Type%]&lt;/div&gt;&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;%c4Description%&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-5">
+          <mxCell parent="0AwdP0as4XzpQiit8Gjk-2" style="html=1;dashed=0;whitespace=wrap;fillColor=#08427b;strokeColor=none;fontColor=#ffffff;shape=mxgraph.c4.person;align=center;metaEdit=1;points=[[0.5,0,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0]];metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};fontSize=9;" vertex="1">
+            <mxGeometry height="80" width="60" x="19" y="35" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="name" c4Type="Software System" c4Description="Description" label="&lt;b style=&quot;font-size: 9px;&quot;&gt;%c4Name%&lt;/b&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;[%c4Type%]&lt;/div&gt;&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;%c4Description%&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-6">
+          <mxCell parent="0AwdP0as4XzpQiit8Gjk-2" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#1168BD;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#1168BD;metaEdit=1;metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];fontSize=9;" vertex="1">
+            <mxGeometry height="65" width="90" x="98" y="42.5" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="name" c4Type="Software System" c4Description="Description" label="&lt;b style=&quot;font-size: 9px;&quot;&gt;%c4Name%&lt;/b&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;[%c4Type%]&lt;/div&gt;&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;%c4Description%&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-7">
+          <mxCell parent="0AwdP0as4XzpQiit8Gjk-2" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#999999;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#8A8A8A;metaEdit=1;metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];fontSize=9;" vertex="1">
+            <mxGeometry height="65" width="90" x="203.5" y="42.5" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="name" c4Type="Component" c4Technology="technology" c4Description="Description" label="&lt;b style=&quot;font-size: 9px;&quot;&gt;%c4Name%&lt;/b&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;%c4Description%&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-8">
+          <mxCell parent="0AwdP0as4XzpQiit8Gjk-2" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#85BBF0;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#78A8D8;metaEdit=1;metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];fontSize=9;" vertex="1">
+            <mxGeometry height="65" width="90" x="426" y="42.5" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="name" c4Type="Container" c4Technology="technology" c4Description="Description" label="&lt;b style=&quot;font-size: 9px;&quot;&gt;%c4Name%&lt;/b&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;%c4Description%&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-9">
+          <mxCell parent="0AwdP0as4XzpQiit8Gjk-2" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#438DD5;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#3C7FC0;metaEdit=1;metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];fontSize=9;" vertex="1">
+            <mxGeometry height="65" width="90" x="314.5" y="42.5" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="name" c4Type="ExecutionEnvironment" c4Application="applicationAndVersion" label="&lt;div style=&quot;text-align: left; font-size: 9px;&quot;&gt;%c4Name%&lt;/div&gt;&lt;div style=&quot;text-align: left; font-size: 9px;&quot;&gt;[%c4Application%]&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-10">
+          <mxCell parent="0AwdP0as4XzpQiit8Gjk-2" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#ffffff;fontColor=#000000;align=left;arcSize=5;strokeColor=#000000;verticalAlign=bottom;metaEdit=1;metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];fontSize=9;" vertex="1">
+            <mxGeometry height="60" width="141" x="59" y="130" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="hostname" c4Type="DeploymentNode" c4OperationSystem="operationSystem" c4ScalingFactor="" label="&lt;div style=&quot;text-align: left; font-size: 9px;&quot;&gt;%c4Name%&lt;/div&gt;&lt;div style=&quot;text-align: left; font-size: 9px;&quot;&gt;[%c4OperationSystem%]&lt;/div&gt;&lt;div style=&quot;text-align: right; font-size: 9px;&quot;&gt;%c4ScalingFactor%&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-11">
+          <mxCell parent="0AwdP0as4XzpQiit8Gjk-2" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#ffffff;fontColor=#000000;align=left;arcSize=5;strokeColor=#000000;verticalAlign=bottom;metaEdit=1;metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];fontSize=9;" vertex="1">
+            <mxGeometry height="60" width="140" x="220" y="130" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Database" c4Technology="Technology" c4Description="Description" label="%c4Type%&lt;div style=&quot;font-size: 9px;&quot;&gt;[Container:&amp;nbsp;%c4Technology%]&lt;/div&gt;&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;%c4Description%&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-12">
+          <mxCell parent="0AwdP0as4XzpQiit8Gjk-2" style="shape=cylinder;whiteSpace=wrap;html=1;boundedLbl=1;rounded=0;labelBackgroundColor=none;fillColor=#438DD5;fontSize=9;fontColor=#ffffff;align=center;strokeColor=#3C7FC0;metaEdit=1;points=[[0.5,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.5,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};" vertex="1">
+            <mxGeometry height="70" width="90" x="380" y="130" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Database" c4Technology="Technology" c4Description="External" label="%c4Type%&lt;div style=&quot;font-size: 9px;&quot;&gt;[Container:&amp;nbsp;%c4Technology%]&lt;/div&gt;&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;%c4Description%&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-13">
+          <mxCell parent="0AwdP0as4XzpQiit8Gjk-2" style="shape=cylinder;whiteSpace=wrap;html=1;boundedLbl=1;rounded=1;labelBackgroundColor=none;fillColor=#999999;fontSize=10;fontColor=#ffffff;align=center;strokeColor=#8A8A8A;metaEdit=1;points=[[0.5,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.5,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};arcSize=10;" vertex="1">
+            <mxGeometry height="70" width="90" x="480" y="130" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="technology" c4Description="Relationship" label="&lt;div style=&quot;text-align: left; font-size: 9px;&quot;&gt;&lt;div style=&quot;text-align: center; font-size: 9px;&quot;&gt;&lt;b style=&quot;font-size: 9px;&quot;&gt;%c4Description%&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: center; font-size: 9px;&quot;&gt;[%c4Technology%]&lt;/div&gt;&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-14">
+          <mxCell edge="1" parent="0AwdP0as4XzpQiit8Gjk-2" style="edgeStyle=none;rounded=0;html=1;jettySize=auto;orthogonalLoop=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;jumpStyle=none;dashed=1;metaEdit=1;metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};fontSize=9;">
+            <mxGeometry relative="1" width="160" as="geometry">
+              <mxPoint x="536" y="74.5" as="sourcePoint" />
+              <mxPoint x="676" y="74.5" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Operador del 9-1-1" c4Type="Person" c4Description="Registra, clasifica y despacha incidentes entrantes" label="&lt;b style=&quot;font-size: 9px;&quot;&gt;%c4Name%&lt;/b&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;[%c4Type%]&lt;/div&gt;&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;%c4Description%&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-15">
+          <mxCell parent="1" style="html=1;dashed=0;whitespace=wrap;fillColor=#08427b;strokeColor=none;fontColor=#ffffff;shape=mxgraph.c4.person;align=center;metaEdit=1;points=[[0.5,0,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0]];metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};fontSize=9;" vertex="1">
+            <mxGeometry height="160" width="120" x="240" y="3580" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Supervisor Institucional" c4Type="Person" c4Description="Monitorea incidentes activos y gestiona recursos" label="&lt;b style=&quot;font-size: 9px;&quot;&gt;%c4Name%&lt;/b&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;[%c4Type%]&lt;/div&gt;&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;%c4Description%&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-16">
+          <mxCell parent="1" style="html=1;dashed=0;whitespace=wrap;fillColor=#08427b;strokeColor=none;fontColor=#ffffff;shape=mxgraph.c4.person;align=center;metaEdit=1;points=[[0.5,0,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0]];metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};fontSize=9;" vertex="1">
+            <mxGeometry height="160" width="120" x="240" y="3760" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Analista Territorial" c4Type="Person" c4Description="Consulta mapas de calor y genera inteligencia preventiva" label="&lt;b style=&quot;font-size: 9px;&quot;&gt;%c4Name%&lt;/b&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;[%c4Type%]&lt;/div&gt;&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;%c4Description%&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-17">
+          <mxCell parent="1" style="html=1;dashed=0;whitespace=wrap;fillColor=#08427b;strokeColor=none;fontColor=#ffffff;shape=mxgraph.c4.person;align=center;metaEdit=1;points=[[0.5,0,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0]];metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};fontSize=9;" vertex="1">
+            <mxGeometry height="160" width="120" x="240" y="3960" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Oficial o Unidad de Campo" c4Type="Person" c4Description="Actualiza estado de recursos y registra eventos " label="&lt;b style=&quot;font-size: 9px;&quot;&gt;%c4Name%&lt;/b&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;[%c4Type%]&lt;/div&gt;&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;%c4Description%&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-18">
+          <mxCell parent="1" style="html=1;dashed=0;whitespace=wrap;fillColor=#08427b;strokeColor=none;fontColor=#ffffff;shape=mxgraph.c4.person;align=center;metaEdit=1;points=[[0.5,0,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0]];metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};fontSize=9;" vertex="1">
+            <mxGeometry height="160" width="120" x="240" y="4155" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Oficial o Unidad de Campo" c4Type="Person" c4Description="Coordinador de Emergencia Nacional" label="&lt;b style=&quot;font-size: 9px;&quot;&gt;%c4Name%&lt;/b&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;[%c4Type%]&lt;/div&gt;&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;%c4Description%&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-19">
+          <mxCell parent="1" style="html=1;dashed=0;whitespace=wrap;fillColor=#08427b;strokeColor=none;fontColor=#ffffff;shape=mxgraph.c4.person;align=center;metaEdit=1;points=[[0.5,0,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0]];metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};fontSize=9;" vertex="1">
+            <mxGeometry height="160" width="120" x="240" y="4340" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Auditor de la Contraloría" c4Type="Person" c4Description="Consulta bitácora históricas para fiscalización. " label="&lt;b style=&quot;font-size: 9px;&quot;&gt;%c4Name%&lt;/b&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;[%c4Type%]&lt;/div&gt;&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;%c4Description%&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-20">
+          <mxCell parent="1" style="html=1;dashed=0;whitespace=wrap;fillColor=#08427b;strokeColor=none;fontColor=#ffffff;shape=mxgraph.c4.person;align=center;metaEdit=1;points=[[0.5,0,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0]];metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};fontSize=9;" vertex="1">
+            <mxGeometry height="160" width="120" x="250" y="4540" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Administrador de accesos" c4Type="Person" c4Description="Valida y administra control de acceso de los usuarios" label="&lt;b style=&quot;font-size: 9px;&quot;&gt;%c4Name%&lt;/b&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;[%c4Type%]&lt;/div&gt;&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;%c4Description%&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-21">
+          <mxCell parent="1" style="html=1;dashed=0;whitespace=wrap;fillColor=#08427b;strokeColor=none;fontColor=#ffffff;shape=mxgraph.c4.person;align=center;metaEdit=1;points=[[0.5,0,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0]];metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};fontSize=9;" vertex="1">
+            <mxGeometry height="160" width="120" x="250" y="4730" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Sistema 9-1-1" c4Type="Software System" c4Description="Fuente de entrada de incidentes reportados por ciudadanos" label="&lt;b style=&quot;font-size: 9px;&quot;&gt;%c4Name%&lt;/b&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;[%c4Type%]&lt;/div&gt;&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;%c4Description%&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-22">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#999999;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#8A8A8A;metaEdit=1;metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];fontSize=9;" vertex="1">
+            <mxGeometry height="100" width="160" x="920" y="3590" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Sistemas Internos Institucionales" c4Type="Software System" c4Description="Sistemas de despacho y gestión de recursos de cada institución" label="&lt;b style=&quot;font-size: 9px;&quot;&gt;%c4Name%&lt;/b&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;[%c4Type%]&lt;/div&gt;&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;%c4Description%&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-23">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#999999;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#8A8A8A;metaEdit=1;metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];fontSize=9;" vertex="1">
+            <mxGeometry height="100" width="160" x="920" y="3740" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Sistema de la Contraloría" c4Type="Software System" c4Description="Destinos de exportaciones de bitácoras y auditorías" label="&lt;b style=&quot;font-size: 9px;&quot;&gt;%c4Name%&lt;/b&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;[%c4Type%]&lt;/div&gt;&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;%c4Description%&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-24">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#999999;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#8A8A8A;metaEdit=1;metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];fontSize=9;" vertex="1">
+            <mxGeometry height="100" width="160" x="920" y="3920" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="" c4Description="Introduce Alertas" label="&lt;div style=&quot;text-align: left; font-size: 9px;&quot;&gt;&lt;div style=&quot;text-align: center; font-size: 9px;&quot;&gt;&lt;b style=&quot;font-size: 9px;&quot;&gt;%c4Description%&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: center; font-size: 9px;&quot;&gt;[%c4Technology%]&lt;/div&gt;&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-25">
+          <mxCell edge="1" parent="1" source="0AwdP0as4XzpQiit8Gjk-15" style="edgeStyle=none;rounded=0;html=1;jettySize=auto;orthogonalLoop=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;jumpStyle=none;dashed=1;metaEdit=1;metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};fontSize=9;entryX=0.419;entryY=0.023;entryDx=0;entryDy=0;entryPerimeter=0;" target="0AwdP0as4XzpQiit8Gjk-1">
+            <mxGeometry relative="1" width="160" as="geometry">
+              <mxPoint x="790" y="3760" as="sourcePoint" />
+              <mxPoint x="930" y="3760" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="" c4Description="Revisa Reportes" label="&lt;div style=&quot;text-align: left; font-size: 9px;&quot;&gt;&lt;div style=&quot;text-align: center; font-size: 9px;&quot;&gt;&lt;b style=&quot;font-size: 9px;&quot;&gt;%c4Description%&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: center; font-size: 9px;&quot;&gt;[%c4Technology%]&lt;/div&gt;&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-26">
+          <mxCell edge="1" parent="1" source="0AwdP0as4XzpQiit8Gjk-1" style="edgeStyle=none;rounded=0;html=1;jettySize=auto;orthogonalLoop=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;jumpStyle=none;dashed=1;metaEdit=1;metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};fontSize=9;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0;exitY=0.25;exitDx=0;exitDy=0;exitPerimeter=0;" target="0AwdP0as4XzpQiit8Gjk-16">
+            <mxGeometry relative="1" width="160" as="geometry">
+              <mxPoint x="600" y="3930" as="sourcePoint" />
+              <mxPoint x="938" y="4243" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="" c4Description="Revisa Reportes" label="&lt;div style=&quot;text-align: left; font-size: 9px;&quot;&gt;&lt;div style=&quot;text-align: center; font-size: 9px;&quot;&gt;&lt;b style=&quot;font-size: 9px;&quot;&gt;%c4Description%&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: center; font-size: 9px;&quot;&gt;[%c4Technology%]&lt;/div&gt;&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-27">
+          <mxCell edge="1" parent="1" source="0AwdP0as4XzpQiit8Gjk-1" style="edgeStyle=none;rounded=0;html=1;jettySize=auto;orthogonalLoop=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;jumpStyle=none;dashed=1;metaEdit=1;metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};fontSize=9;exitX=-0.01;exitY=0.438;exitDx=0;exitDy=0;exitPerimeter=0;" target="0AwdP0as4XzpQiit8Gjk-17">
+            <mxGeometry relative="1" width="160" as="geometry">
+              <mxPoint x="570" y="4040" as="sourcePoint" />
+              <mxPoint x="908" y="4353" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="" c4Description="Introduce Alertas" label="&lt;div style=&quot;text-align: left; font-size: 9px;&quot;&gt;&lt;div style=&quot;text-align: center; font-size: 9px;&quot;&gt;&lt;b style=&quot;font-size: 9px;&quot;&gt;%c4Description%&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: center; font-size: 9px;&quot;&gt;[%c4Technology%]&lt;/div&gt;&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-28">
+          <mxCell edge="1" parent="1" source="0AwdP0as4XzpQiit8Gjk-19" style="edgeStyle=none;rounded=0;html=1;jettySize=auto;orthogonalLoop=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;jumpStyle=none;dashed=1;metaEdit=1;metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};fontSize=9;entryX=0;entryY=0.75;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" target="0AwdP0as4XzpQiit8Gjk-1">
+            <mxGeometry relative="1" width="160" as="geometry">
+              <mxPoint x="490" y="4370" as="sourcePoint" />
+              <mxPoint x="828" y="4683" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="" c4Description="Realiza Auditorias" label="&lt;div style=&quot;text-align: left; font-size: 9px;&quot;&gt;&lt;div style=&quot;text-align: center; font-size: 9px;&quot;&gt;&lt;b style=&quot;font-size: 9px;&quot;&gt;%c4Description%&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: center; font-size: 9px;&quot;&gt;[%c4Technology%]&lt;/div&gt;&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-29">
+          <mxCell edge="1" parent="1" source="0AwdP0as4XzpQiit8Gjk-20" style="edgeStyle=none;rounded=0;html=1;jettySize=auto;orthogonalLoop=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;jumpStyle=none;dashed=1;metaEdit=1;metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};fontSize=9;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" target="0AwdP0as4XzpQiit8Gjk-1">
+            <mxGeometry relative="1" width="160" as="geometry">
+              <mxPoint x="450" y="4560" as="sourcePoint" />
+              <mxPoint x="670" y="4420" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="" c4Description="Admistración de Accessos" label="&lt;div style=&quot;text-align: left; font-size: 9px;&quot;&gt;&lt;div style=&quot;text-align: center; font-size: 9px;&quot;&gt;&lt;b style=&quot;font-size: 9px;&quot;&gt;%c4Description%&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: center; font-size: 9px;&quot;&gt;[%c4Technology%]&lt;/div&gt;&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-30">
+          <mxCell edge="1" parent="1" source="0AwdP0as4XzpQiit8Gjk-21" style="edgeStyle=none;rounded=0;html=1;jettySize=auto;orthogonalLoop=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;jumpStyle=none;dashed=1;metaEdit=1;metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};fontSize=9;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" target="0AwdP0as4XzpQiit8Gjk-1">
+            <mxGeometry relative="1" width="160" as="geometry">
+              <mxPoint x="870" y="4760" as="sourcePoint" />
+              <mxPoint x="710" y="4600" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="" c4Description="Envía incidentes" label="&lt;div style=&quot;text-align: left; font-size: 9px;&quot;&gt;&lt;div style=&quot;text-align: center; font-size: 9px;&quot;&gt;&lt;b style=&quot;font-size: 9px;&quot;&gt;%c4Description%&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: center; font-size: 9px;&quot;&gt;[%c4Technology%]&lt;/div&gt;&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-31">
+          <mxCell edge="1" parent="1" source="0AwdP0as4XzpQiit8Gjk-22" style="edgeStyle=none;rounded=0;html=1;jettySize=auto;orthogonalLoop=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;jumpStyle=none;dashed=1;metaEdit=1;metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};fontSize=9;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" target="0AwdP0as4XzpQiit8Gjk-1">
+            <mxGeometry relative="1" width="160" as="geometry">
+              <mxPoint x="770" y="3840" as="sourcePoint" />
+              <mxPoint x="1108" y="4153" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="" c4Description="Sincroniza disponibilidad y despachos" label="&lt;div style=&quot;text-align: left; font-size: 9px;&quot;&gt;&lt;div style=&quot;text-align: center; font-size: 9px;&quot;&gt;&lt;b style=&quot;font-size: 9px;&quot;&gt;%c4Description%&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: center; font-size: 9px;&quot;&gt;[%c4Technology%]&lt;/div&gt;&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-32">
+          <mxCell edge="1" parent="1" source="0AwdP0as4XzpQiit8Gjk-1" style="edgeStyle=none;rounded=0;html=1;jettySize=auto;orthogonalLoop=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;jumpStyle=none;dashed=1;metaEdit=1;metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};fontSize=9;exitX=0.75;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" target="0AwdP0as4XzpQiit8Gjk-23">
+            <mxGeometry relative="1" width="160" as="geometry">
+              <mxPoint x="860" y="3880" as="sourcePoint" />
+              <mxPoint x="950" y="3850" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="" c4Description="Exporta bitácoras" label="&lt;div style=&quot;text-align: left; font-size: 9px;&quot;&gt;&lt;div style=&quot;text-align: center; font-size: 9px;&quot;&gt;&lt;b style=&quot;font-size: 9px;&quot;&gt;%c4Description%&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: center; font-size: 9px;&quot;&gt;[%c4Technology%]&lt;/div&gt;&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-33">
+          <mxCell edge="1" parent="1" source="0AwdP0as4XzpQiit8Gjk-1" style="edgeStyle=none;rounded=0;html=1;jettySize=auto;orthogonalLoop=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;jumpStyle=none;dashed=1;metaEdit=1;metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};fontSize=9;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;exitPerimeter=0;" target="0AwdP0as4XzpQiit8Gjk-24">
+            <mxGeometry relative="1" width="160" as="geometry">
+              <mxPoint x="930" y="4160" as="sourcePoint" />
+              <mxPoint x="1268" y="4473" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="6ZnvrQZJkhZQ5EsFmywb" name="C4 Nivel 2">
+    <mxGraphModel dx="3084" dy="1700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="boundary" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#1168BD;dashed=1;dashPattern=8 4;fontColor=#1168BD;fontStyle=1;fontSize=13;verticalAlign=top;arcSize=3;" value="CivisGuard Analytics Platform" vertex="1">
+          <mxGeometry height="1480" width="1100" x="280" y="80" as="geometry" />
+        </mxCell>
+        <object placeholders="1" c4Name="Operador del 9-1-1" c4Type="Person" c4Description="Registra y clasifica incidentes" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="person-operador">
+          <mxCell parent="1" style="html=1;dashed=0;whitespace=wrap;fillColor=#08427b;strokeColor=none;fontColor=#ffffff;shape=mxgraph.c4.person;align=center;fontSize=10;" vertex="1">
+            <mxGeometry height="160" width="120" x="50" y="180" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Supervisor Institucional" c4Type="Person" c4Description="Monitorea incidentes y gestiona recursos" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="person-supervisor">
+          <mxCell parent="1" style="html=1;dashed=0;whitespace=wrap;fillColor=#08427b;strokeColor=none;fontColor=#ffffff;shape=mxgraph.c4.person;align=center;fontSize=10;" vertex="1">
+            <mxGeometry height="160" width="120" x="50" y="420" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Analista Territorial" c4Type="Person" c4Description="Consulta mapas de calor y reportes" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="person-analista">
+          <mxCell parent="1" style="html=1;dashed=0;whitespace=wrap;fillColor=#08427b;strokeColor=none;fontColor=#ffffff;shape=mxgraph.c4.person;align=center;fontSize=10;" vertex="1">
+            <mxGeometry height="160" width="120" x="50" y="660" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Oficial de Campo" c4Type="Person" c4Description="Actualiza recursos offline/online" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="person-campo">
+          <mxCell parent="1" style="html=1;dashed=0;whitespace=wrap;fillColor=#08427b;strokeColor=none;fontColor=#ffffff;shape=mxgraph.c4.person;align=center;fontSize=10;" vertex="1">
+            <mxGeometry height="160" width="120" x="50" y="900" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Coordinador CNE" c4Type="Person" c4Description="Activa Protocolos de Emergencia Nacional" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="person-cne">
+          <mxCell parent="1" style="html=1;dashed=0;whitespace=wrap;fillColor=#08427b;strokeColor=none;fontColor=#ffffff;shape=mxgraph.c4.person;align=center;fontSize=10;" vertex="1">
+            <mxGeometry height="160" width="120" x="50" y="1140" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Auditor Contraloría" c4Type="Person" c4Description="Consulta bitácoras para fiscalización" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="person-auditor">
+          <mxCell parent="1" style="html=1;dashed=0;whitespace=wrap;fillColor=#08427b;strokeColor=none;fontColor=#ffffff;shape=mxgraph.c4.person;align=center;fontSize=10;" vertex="1">
+            <mxGeometry height="160" width="120" x="50" y="1380" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Web App Institucional" c4Type="Container" c4Technology="React / TypeScript" c4Description="Portal web para supervisores y analistas. Muestra mapa de calor, reportes y gestión de recursos por institución" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="cont-webapp">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#438DD5;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#3C7FC0;fontSize=10;" vertex="1">
+            <mxGeometry height="120" width="200" x="310" y="160" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="App Móvil de Campo" c4Type="Container" c4Technology="React Native" c4Description="Aplicación para unidades en campo. Soporta operación offline con cola local de eventos sincronizados al reconectar" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="cont-mobile">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#438DD5;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#3C7FC0;fontSize=10;" vertex="1">
+            <mxGeometry height="120" width="200" x="310" y="880" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="API Gateway" c4Type="Container" c4Technology="Kong / Nginx" c4Description="Punto único de entrada. Maneja autenticación, autorización RBAC, rate limiting y enrutamiento a microservicios" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="cont-gateway">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#438DD5;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#3C7FC0;fontSize=10;" vertex="1">
+            <mxGeometry height="120" width="200" x="590" y="380" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Servicio de Incidentes" c4Type="Container" c4Technology="Node.js / Express" c4Description="Registra y clasifica incidentes. Publica evento IncidenteRegistrado a Kafka" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="cont-incidentes">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#438DD5;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#3C7FC0;fontSize=10;" vertex="1">
+            <mxGeometry height="120" width="200" x="870" y="160" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Servicio de Despacho" c4Type="Container" c4Technology="Java / Spring Boot" c4Description="Evalúa recursos y confirma despacho en menos de 90 segundos. Publica RecursosDespachados" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="cont-despacho">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#438DD5;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#3C7FC0;fontSize=10;" vertex="1">
+            <mxGeometry height="120" width="200" x="870" y="380" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Servicio de Protocolos CNE" c4Type="Container" c4Technology="Node.js / Express" c4Description="Recibe activación del CNE y publica ProtocoloEmergenciaNacional modificando prioridades de todas las instituciones" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="cont-cne">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#438DD5;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#3C7FC0;fontSize=10;" vertex="1">
+            <mxGeometry height="120" width="200" x="870" y="600" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Servicio de Sincronización Offline" c4Type="Container" c4Technology="Go" c4Description="Recibe eventos acumulados de la app móvil y resuelve conflictos y duplicados al reconectar" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="cont-sync">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#438DD5;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#3C7FC0;fontSize=10;" vertex="1">
+            <mxGeometry height="120" width="200" x="870" y="840" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Bus de Eventos" c4Type="Container" c4Technology="Apache Kafka" c4Description="Cola central. Tópicos: IncidenteRegistrado, RecursosDespachados, ProtocoloEmergencia, EventoCampo" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="cont-kafka">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#E6821E;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#CF6F0F;fontSize=10;" vertex="1">
+            <mxGeometry height="120" width="200" x="590" y="700" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Worker Mapa de Calor" c4Type="Container" c4Technology="Python / KEDA" c4Description="Consume eventos y actualiza el mapa de calor en menos de 20 segundos. Escala automáticamente con KEDA" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="cont-worker-mapa">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#438DD5;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#3C7FC0;fontSize=10;" vertex="1">
+            <mxGeometry height="120" width="200" x="310" y="1060" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Worker de Bitácora" c4Type="Container" c4Technology="Python / KEDA" c4Description="Consume todos los eventos y los persiste en modo append-only. Registro inmutable requerido por Contraloría" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="cont-worker-bitacora">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#438DD5;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#3C7FC0;fontSize=10;" vertex="1">
+            <mxGeometry height="120" width="200" x="590" y="1060" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Worker Analítica" c4Type="Container" c4Technology="Python / KEDA" c4Description="Consume eventos y alimenta el datawarehouse con métricas territoriales y de reincidencia" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="cont-worker-analitica">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#438DD5;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#3C7FC0;fontSize=10;" vertex="1">
+            <mxGeometry height="120" width="200" x="870" y="1060" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="BD Incidentes" c4Technology="PostgreSQL" c4Description="Datos transaccionales de incidentes activos por institución" label="&lt;b&gt;BD Incidentes&lt;/b&gt;&lt;div&gt;[Container: PostgreSQL]&lt;/div&gt;&lt;br&gt;&lt;div&gt;Datos transaccionales de incidentes activos&lt;/div&gt;" id="db-incidentes">
+          <mxCell parent="1" style="shape=cylinder;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#438DD5;fontColor=#ffffff;strokeColor=#3C7FC0;fontSize=10;" vertex="1">
+            <mxGeometry height="100" width="160" x="1150" y="1280" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="BD Despacho" c4Technology="PostgreSQL" c4Description="Estado de recursos y confirmaciones de despacho" label="&lt;b&gt;BD Despacho&lt;/b&gt;&lt;div&gt;[Container: PostgreSQL]&lt;/div&gt;&lt;br&gt;&lt;div&gt;Estado de recursos y despachos&lt;/div&gt;" id="db-despacho">
+          <mxCell parent="1" style="shape=cylinder;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#438DD5;fontColor=#ffffff;strokeColor=#3C7FC0;fontSize=10;" vertex="1">
+            <mxGeometry height="100" width="160" x="610" y="1280" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Datawarehouse" c4Technology="ClickHouse" c4Description="Almacén analítico para mapas de calor, reportes y métricas territoriales" label="&lt;b&gt;Datawarehouse&lt;/b&gt;&lt;div&gt;[Container: ClickHouse]&lt;/div&gt;&lt;br&gt;&lt;div&gt;Analítica territorial y reportes&lt;/div&gt;" id="db-dw">
+          <mxCell parent="1" style="shape=cylinder;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#438DD5;fontColor=#ffffff;strokeColor=#3C7FC0;fontSize=10;" vertex="1">
+            <mxGeometry height="100" width="160" x="330" y="1280" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="BD Bitácora" c4Technology="PostgreSQL append-only" c4Description="Registro inmutable de todos los eventos. Retención mínima 5 años" label="&lt;b&gt;BD Bitácora&lt;/b&gt;&lt;div&gt;[Container: PostgreSQL append-only]&lt;/div&gt;&lt;br&gt;&lt;div&gt;Registro inmutable 5 años&lt;/div&gt;" id="db-bitacora">
+          <mxCell parent="1" style="shape=cylinder;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#438DD5;fontColor=#ffffff;strokeColor=#3C7FC0;fontSize=10;" vertex="1">
+            <mxGeometry height="100" width="160" x="910" y="1280" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Sistema 9-1-1" c4Type="Software System" c4Description="Fuente de incidentes reportados por ciudadanos" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="ext-911">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#999999;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#8A8A8A;fontSize=10;" vertex="1">
+            <mxGeometry height="100" width="170" x="1430" y="170" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Sistemas Institucionales" c4Type="Software System" c4Description="Despacho FP, ambulancias CCSS/Cruz Roja, unidades Bomberos" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="ext-instituciones">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#999999;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#8A8A8A;fontSize=10;" vertex="1">
+            <mxGeometry height="100" width="170" x="1430" y="390" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Sistema Contraloría" c4Type="Software System" c4Description="Recibe exportaciones de bitácoras para auditoría legal" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="ext-contraloria">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#999999;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#8A8A8A;fontSize=10;" vertex="1">
+            <mxGeometry height="100" width="170" x="1430" y="600" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="HTTPS" c4Description="Usa" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-operador-webapp">
+          <mxCell edge="1" parent="1" source="person-operador" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="cont-webapp" vertex="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="HTTPS" c4Description="Usa" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-supervisor-webapp">
+          <mxCell edge="1" parent="1" source="person-supervisor" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="cont-webapp" vertex="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="HTTPS" c4Description="Usa" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-analista-webapp">
+          <mxCell edge="1" parent="1" source="person-analista" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="cont-webapp" vertex="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="HTTPS / Offline" c4Description="Usa" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-campo-mobile">
+          <mxCell edge="1" parent="1" source="person-campo" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="cont-mobile" vertex="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="HTTPS" c4Description="Activa protocolo" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-cne-gateway">
+          <mxCell edge="1" parent="1" source="person-cne" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="cont-gateway" vertex="1">
+            <mxGeometry relative="1" x="-0.3115" as="geometry">
+              <mxPoint as="offset" />
+              <Array as="points">
+                <mxPoint x="550" y="1230" />
+                <mxPoint x="550" y="430" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="HTTPS" c4Description="Exporta bitácoras" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-auditor-bitacora">
+          <mxCell edge="1" parent="1" source="person-auditor" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="cont-worker-bitacora" vertex="1">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="570" y="1460" />
+                <mxPoint x="570" y="1220" />
+                <mxPoint x="640" y="1220" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="HTTPS / REST" c4Description="Envía peticiones" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-webapp-gateway">
+          <mxCell edge="1" parent="1" source="cont-webapp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="cont-gateway" vertex="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="HTTPS / REST" c4Description="Sincroniza eventos" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-mobile-gateway">
+          <mxCell edge="1" parent="1" source="cont-mobile" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="cont-gateway" vertex="1">
+            <mxGeometry relative="1" x="0.5273" as="geometry">
+              <mxPoint as="offset" />
+              <Array as="points">
+                <mxPoint x="580" y="940" />
+                <mxPoint x="580" y="470" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="REST" c4Description="Enruta" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-gateway-incidentes">
+          <mxCell edge="1" parent="1" source="cont-gateway" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="cont-incidentes" vertex="1">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="740" y="350" />
+                <mxPoint x="970" y="350" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="REST" c4Description="Enruta" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-gateway-despacho">
+          <mxCell edge="1" parent="1" source="cont-gateway" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="cont-despacho" vertex="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="REST" c4Description="Enruta" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-gateway-cne">
+          <mxCell edge="1" parent="1" source="cont-gateway" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="cont-cne" vertex="1">
+            <mxGeometry relative="1" x="0.2821" as="geometry">
+              <mxPoint x="-1" as="offset" />
+              <Array as="points">
+                <mxPoint x="750" y="530" />
+                <mxPoint x="1040" y="530" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="REST" c4Description="Enruta" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-gateway-sync">
+          <mxCell edge="1" parent="1" source="cont-gateway" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="cont-sync" vertex="1">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="690" y="550" />
+                <mxPoint x="1150" y="550" />
+                <mxPoint x="1150" y="900" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="Kafka Producer" c4Description="Publica IncidenteRegistrado" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-incidentes-kafka">
+          <mxCell edge="1" parent="1" source="cont-incidentes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#E6821E;strokeWidth=2;fontColor=#707070;dashed=0;fontSize=9;" target="cont-kafka" vertex="1">
+            <mxGeometry relative="1" x="0.2292" as="geometry">
+              <mxPoint y="-1" as="offset" />
+              <Array as="points">
+                <mxPoint x="920" y="310" />
+                <mxPoint x="500" y="310" />
+                <mxPoint x="500" y="730" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="Kafka Producer" c4Description="Publica RecursosDespachados" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-despacho-kafka">
+          <mxCell edge="1" parent="1" source="cont-despacho" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#E6821E;strokeWidth=2;fontColor=#707070;dashed=0;fontSize=9;" target="cont-kafka" vertex="1">
+            <mxGeometry relative="1" x="0.0667" as="geometry">
+              <mxPoint as="offset" />
+              <Array as="points">
+                <mxPoint x="910" y="580" />
+                <mxPoint x="660" y="580" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="Kafka Producer" c4Description="Publica ProtocoloEmergencia" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-cne-kafka">
+          <mxCell edge="1" parent="1" source="cont-cne" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#E6821E;strokeWidth=2;fontColor=#707070;dashed=0;fontSize=9;" target="cont-kafka" vertex="1">
+            <mxGeometry relative="1" x="-0.0476" as="geometry">
+              <mxPoint as="offset" />
+              <Array as="points">
+                <mxPoint x="700" y="660" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="Kafka Producer" c4Description="Publica EventoCampo" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-sync-kafka">
+          <mxCell edge="1" parent="1" source="cont-sync" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#E6821E;strokeWidth=2;fontColor=#707070;dashed=0;fontSize=9;" target="cont-kafka" vertex="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="Kafka Consumer" c4Description="Consume eventos" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-kafka-mapa">
+          <mxCell edge="1" parent="1" source="cont-kafka" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#E6821E;strokeWidth=2;fontColor=#707070;dashed=0;fontSize=9;" target="cont-worker-mapa" vertex="1">
+            <mxGeometry relative="1" x="0.5" as="geometry">
+              <mxPoint y="-1" as="offset" />
+              <Array as="points">
+                <mxPoint x="530" y="760" />
+                <mxPoint x="530" y="1120" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="Kafka Consumer" c4Description="Consume eventos" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-kafka-bitacora">
+          <mxCell edge="1" parent="1" source="cont-kafka" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#E6821E;strokeWidth=2;fontColor=#707070;dashed=0;fontSize=9;" target="cont-worker-bitacora" vertex="1">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="670" y="940" />
+                <mxPoint x="670" y="940" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="Kafka Consumer" c4Description="Consume eventos" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-kafka-analitica">
+          <mxCell edge="1" parent="1" source="cont-kafka" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#E6821E;strokeWidth=2;fontColor=#707070;dashed=0;fontSize=9;" target="cont-worker-analitica" vertex="1">
+            <mxGeometry relative="1" x="0.1364" as="geometry">
+              <mxPoint y="-1" as="offset" />
+              <Array as="points">
+                <mxPoint x="820" y="760" />
+                <mxPoint x="820" y="1120" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="SQL" c4Description="Lee / escribe" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-incidentes-db">
+          <mxCell edge="1" parent="1" source="cont-incidentes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="db-incidentes" vertex="1">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1230" y="260" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="SQL" c4Description="Lee / escribe" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-despacho-db">
+          <mxCell edge="1" parent="1" source="cont-despacho" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="db-despacho" vertex="1">
+            <mxGeometry relative="1" x="-0.2727" as="geometry">
+              <mxPoint as="offset" />
+              <Array as="points">
+                <mxPoint x="850" y="440" />
+                <mxPoint x="850" y="1330" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="SQL append-only" c4Description="Escribe registro" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-bitacora-db">
+          <mxCell edge="1" parent="1" source="cont-worker-bitacora" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="db-bitacora" vertex="1">
+            <mxGeometry relative="1" x="-0.4857" as="geometry">
+              <mxPoint x="-1" as="offset" />
+              <Array as="points">
+                <mxPoint x="740" y="1220" />
+                <mxPoint x="990" y="1220" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="SQL" c4Description="Escribe métricas" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-analitica-dw">
+          <mxCell edge="1" parent="1" source="cont-worker-analitica" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="db-dw" vertex="1">
+            <mxGeometry relative="1" x="-0.2459" as="geometry">
+              <mxPoint x="1" as="offset" />
+              <Array as="points">
+                <mxPoint x="950" y="1250" />
+                <mxPoint x="440" y="1250" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="SQL" c4Description="Lee para visualización" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-mapa-dw">
+          <mxCell edge="1" parent="1" source="cont-worker-mapa" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="db-dw" vertex="1">
+            <mxGeometry relative="1" x="-0.6" as="geometry">
+              <mxPoint as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="API / Webhook" c4Description="Envía incidentes" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-911-incidentes">
+          <mxCell edge="1" parent="1" source="ext-911" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#8A8A8A;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="cont-incidentes" vertex="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="API REST" c4Description="Sincroniza disponibilidad" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-despacho-instituciones">
+          <mxCell edge="1" parent="1" source="cont-despacho" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#8A8A8A;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="ext-instituciones" vertex="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="API / Archivo" c4Description="Exporta bitácoras" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-bitacora-contraloria">
+          <mxCell edge="1" parent="1" source="cont-worker-bitacora" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#8A8A8A;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="ext-contraloria" vertex="1">
+            <mxGeometry relative="1" x="-0.3245" as="geometry">
+              <mxPoint as="offset" />
+              <Array as="points">
+                <mxPoint x="750" y="1020" />
+                <mxPoint x="1515" y="1020" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <mxCell id="legend-box" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666666;dashed=1;dashPattern=1 2;" value="" vertex="1">
+          <mxGeometry height="160" width="800" x="280" y="1560" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontStyle=1;fontColor=#666666;fontSize=11;" value="Leyenda" vertex="1">
+          <mxGeometry height="20" width="80" x="295" y="1570" as="geometry" />
+        </mxCell>
+        <object placeholders="1" c4Name="Persona" c4Type="Person" c4Description="" label="&lt;b style=&#39;font-size:8px&#39;&gt;%c4Name%&lt;/b&gt;&lt;div style=&#39;font-size:8px&#39;&gt;[%c4Type%]&lt;/div&gt;" id="legend-person">
+          <mxCell parent="1" style="html=1;dashed=0;whitespace=wrap;fillColor=#08427b;strokeColor=none;fontColor=#ffffff;shape=mxgraph.c4.person;align=center;fontSize=8;" vertex="1">
+            <mxGeometry height="80" width="60" x="295" y="1600" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Contenedor" c4Type="Container" c4Technology="Tecnología" c4Description="" label="&lt;b style=&#39;font-size:8px&#39;&gt;%c4Name%&lt;/b&gt;&lt;div style=&#39;font-size:8px&#39;&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;" id="legend-container">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;fontColor=#ffffff;arcSize=10;strokeColor=#3C7FC0;fontSize=8;" vertex="1">
+            <mxGeometry height="50" width="140" x="375" y="1615" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Bus de eventos" c4Type="Container" c4Technology="Apache Kafka" c4Description="" label="&lt;b style=&#39;font-size:8px&#39;&gt;%c4Name%&lt;/b&gt;&lt;div style=&#39;font-size:8px&#39;&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;" id="legend-kafka">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6821E;fontColor=#ffffff;arcSize=10;strokeColor=#CF6F0F;fontSize=8;" vertex="1">
+            <mxGeometry height="50" width="140" x="530" y="1615" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Sistema externo" c4Type="Software System" c4Description="" label="&lt;b style=&#39;font-size:8px&#39;&gt;%c4Name%&lt;/b&gt;&lt;div style=&#39;font-size:8px&#39;&gt;[%c4Type%]&lt;/div&gt;" id="legend-external">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;fontColor=#ffffff;arcSize=10;strokeColor=#8A8A8A;fontSize=8;" vertex="1">
+            <mxGeometry height="50" width="140" x="685" y="1615" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="legend-rel1" edge="1" parent="1" style="edgeStyle=none;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=8;" value="&lt;b style=&#39;font-size:8px&#39;&gt;Relación REST/SQL&lt;/b&gt;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="840" y="1625" as="sourcePoint" />
+            <mxPoint x="990" y="1625" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend-rel2" edge="1" parent="1" style="edgeStyle=none;html=1;strokeColor=#E6821E;strokeWidth=2;fontColor=#707070;dashed=0;fontSize=8;" value="&lt;b style=&#39;font-size:8px&#39;&gt;Evento Kafka&lt;/b&gt;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="840" y="1660" as="sourcePoint" />
+            <mxPoint x="990" y="1660" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
