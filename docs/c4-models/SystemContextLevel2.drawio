@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" pages="2">
   <diagram name="C4 Nivel 1" id="KlW0apmKtK7-6CqX298h">
-    <mxGraphModel dx="3084" dy="-1807" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2372" dy="-2199" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -10,7 +10,7 @@
           </mxCell>
         </object>
         <mxCell id="0AwdP0as4XzpQiit8Gjk-2" connectable="0" parent="1" style="group" value="" vertex="1">
-          <mxGeometry height="220" width="696" x="240" y="5050" as="geometry" />
+          <mxGeometry height="220" width="696" x="250" y="4740" as="geometry" />
         </mxCell>
         <mxCell id="0AwdP0as4XzpQiit8Gjk-3" parent="0AwdP0as4XzpQiit8Gjk-2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666666;dashed=1;dashPattern=1 2;fontColor=#666666;" value="" vertex="1">
           <mxGeometry height="220" width="696" as="geometry" />
@@ -86,24 +86,19 @@
             <mxGeometry height="160" width="120" x="240" y="3960" as="geometry" />
           </mxCell>
         </object>
-        <object placeholders="1" c4Name="Oficial o Unidad de Campo" c4Type="Person" c4Description="Actualiza estado de recursos y registra eventos " label="&lt;b style=&quot;font-size: 9px;&quot;&gt;%c4Name%&lt;/b&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;[%c4Type%]&lt;/div&gt;&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;%c4Description%&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-18">
+        <object placeholders="1" c4Name="Oficial o Unidad de Campo" c4Type="Person" c4Description="Coordinador de Emergencia Nacional" label="&lt;b style=&quot;font-size: 9px;&quot;&gt;%c4Name%&lt;/b&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;[%c4Type%]&lt;/div&gt;&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;%c4Description%&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-19">
           <mxCell parent="1" style="html=1;dashed=0;whitespace=wrap;fillColor=#08427b;strokeColor=none;fontColor=#ffffff;shape=mxgraph.c4.person;align=center;metaEdit=1;points=[[0.5,0,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0]];metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};fontSize=9;" vertex="1">
             <mxGeometry height="160" width="120" x="240" y="4155" as="geometry" />
           </mxCell>
         </object>
-        <object placeholders="1" c4Name="Oficial o Unidad de Campo" c4Type="Person" c4Description="Coordinador de Emergencia Nacional" label="&lt;b style=&quot;font-size: 9px;&quot;&gt;%c4Name%&lt;/b&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;[%c4Type%]&lt;/div&gt;&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;%c4Description%&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-19">
-          <mxCell parent="1" style="html=1;dashed=0;whitespace=wrap;fillColor=#08427b;strokeColor=none;fontColor=#ffffff;shape=mxgraph.c4.person;align=center;metaEdit=1;points=[[0.5,0,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0]];metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};fontSize=9;" vertex="1">
-            <mxGeometry height="160" width="120" x="240" y="4340" as="geometry" />
-          </mxCell>
-        </object>
         <object placeholders="1" c4Name="Auditor de la Contraloría" c4Type="Person" c4Description="Consulta bitácora históricas para fiscalización. " label="&lt;b style=&quot;font-size: 9px;&quot;&gt;%c4Name%&lt;/b&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;[%c4Type%]&lt;/div&gt;&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;%c4Description%&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-20">
           <mxCell parent="1" style="html=1;dashed=0;whitespace=wrap;fillColor=#08427b;strokeColor=none;fontColor=#ffffff;shape=mxgraph.c4.person;align=center;metaEdit=1;points=[[0.5,0,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0]];metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};fontSize=9;" vertex="1">
-            <mxGeometry height="160" width="120" x="250" y="4540" as="geometry" />
+            <mxGeometry height="160" width="120" x="250" y="4355" as="geometry" />
           </mxCell>
         </object>
         <object placeholders="1" c4Name="Administrador de accesos" c4Type="Person" c4Description="Valida y administra control de acceso de los usuarios" label="&lt;b style=&quot;font-size: 9px;&quot;&gt;%c4Name%&lt;/b&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;[%c4Type%]&lt;/div&gt;&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;%c4Description%&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-21">
           <mxCell parent="1" style="html=1;dashed=0;whitespace=wrap;fillColor=#08427b;strokeColor=none;fontColor=#ffffff;shape=mxgraph.c4.person;align=center;metaEdit=1;points=[[0.5,0,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0]];metaData={&quot;c4Type&quot;:{&quot;editable&quot;:false}};fontSize=9;" vertex="1">
-            <mxGeometry height="160" width="120" x="250" y="4730" as="geometry" />
+            <mxGeometry height="160" width="120" x="250" y="4545" as="geometry" />
           </mxCell>
         </object>
         <object placeholders="1" c4Name="Sistema 9-1-1" c4Type="Software System" c4Description="Fuente de entrada de incidentes reportados por ciudadanos" label="&lt;b style=&quot;font-size: 9px;&quot;&gt;%c4Name%&lt;/b&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;[%c4Type%]&lt;/div&gt;&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;%c4Description%&lt;/div&gt;" id="0AwdP0as4XzpQiit8Gjk-22">
@@ -197,7 +192,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="6ZnvrQZJkhZQ5EsFmywb" name="C4 Nivel 2">
-    <mxGraphModel dx="3084" dy="1700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2372" dy="1308" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -296,7 +291,7 @@
         </object>
         <object placeholders="1" c4Type="BD Despacho" c4Technology="PostgreSQL" c4Description="Estado de recursos y confirmaciones de despacho" label="&lt;b&gt;BD Despacho&lt;/b&gt;&lt;div&gt;[Container: PostgreSQL]&lt;/div&gt;&lt;br&gt;&lt;div&gt;Estado de recursos y despachos&lt;/div&gt;" id="db-despacho">
           <mxCell parent="1" style="shape=cylinder;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#438DD5;fontColor=#ffffff;strokeColor=#3C7FC0;fontSize=10;" vertex="1">
-            <mxGeometry height="100" width="160" x="610" y="1280" as="geometry" />
+            <mxGeometry height="100" width="160" x="890" y="1280" as="geometry" />
           </mxCell>
         </object>
         <object placeholders="1" c4Type="Datawarehouse" c4Technology="ClickHouse" c4Description="Almacén analítico para mapas de calor, reportes y métricas territoriales" label="&lt;b&gt;Datawarehouse&lt;/b&gt;&lt;div&gt;[Container: ClickHouse]&lt;/div&gt;&lt;br&gt;&lt;div&gt;Analítica territorial y reportes&lt;/div&gt;" id="db-dw">
@@ -306,7 +301,7 @@
         </object>
         <object placeholders="1" c4Type="BD Bitácora" c4Technology="PostgreSQL append-only" c4Description="Registro inmutable de todos los eventos. Retención mínima 5 años" label="&lt;b&gt;BD Bitácora&lt;/b&gt;&lt;div&gt;[Container: PostgreSQL append-only]&lt;/div&gt;&lt;br&gt;&lt;div&gt;Registro inmutable 5 años&lt;/div&gt;" id="db-bitacora">
           <mxCell parent="1" style="shape=cylinder;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#438DD5;fontColor=#ffffff;strokeColor=#3C7FC0;fontSize=10;" vertex="1">
-            <mxGeometry height="100" width="160" x="910" y="1280" as="geometry" />
+            <mxGeometry height="100" width="160" x="630" y="1280" as="geometry" />
           </mxCell>
         </object>
         <object placeholders="1" c4Name="Sistema 9-1-1" c4Type="Software System" c4Description="Fuente de incidentes reportados por ciudadanos" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="ext-911">
@@ -357,10 +352,11 @@
         </object>
         <object placeholders="1" c4Type="Relationship" c4Technology="HTTPS" c4Description="Exporta bitácoras" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-auditor-bitacora">
           <mxCell edge="1" parent="1" source="person-auditor" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="cont-worker-bitacora" vertex="1">
-            <mxGeometry relative="1" as="geometry">
+            <mxGeometry relative="1" x="-0.0933" as="geometry">
+              <mxPoint as="offset" />
               <Array as="points">
-                <mxPoint x="570" y="1460" />
-                <mxPoint x="570" y="1220" />
+                <mxPoint x="590" y="1460" />
+                <mxPoint x="590" y="1220" />
                 <mxPoint x="640" y="1220" />
               </Array>
             </mxGeometry>
@@ -503,7 +499,7 @@
             <mxGeometry relative="1" x="-0.2727" as="geometry">
               <mxPoint as="offset" />
               <Array as="points">
-                <mxPoint x="850" y="440" />
+                <mxPoint x="850" y="470" />
                 <mxPoint x="850" y="1330" />
               </Array>
             </mxGeometry>
@@ -514,8 +510,8 @@
             <mxGeometry relative="1" x="-0.4857" as="geometry">
               <mxPoint x="-1" as="offset" />
               <Array as="points">
-                <mxPoint x="740" y="1220" />
-                <mxPoint x="990" y="1220" />
+                <mxPoint x="740" y="1250" />
+                <mxPoint x="740" y="1250" />
               </Array>
             </mxGeometry>
           </mxCell>
