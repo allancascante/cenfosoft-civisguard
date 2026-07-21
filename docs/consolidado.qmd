@@ -1,0 +1,1058 @@
+---
+title: "Consolidado de Arquitectura (arc42 + docs)"
+lang: es
+format:
+  pdf:
+    toc: true
+    number-sections: true
+    colorlinks: true
+    geometry:
+      - margin=1in
+---
+
+# Documento consolidado
+
+Este PDF se genera automáticamente desde el contenido de la carpeta `docs`.
+La referencia base es el archivo arc42 en español.
+
+\newpage
+
+## Fuente: src-sad/arc42-template-ES.md
+
+# 
+
+**Acerca de arc42**
+
+arc42, La plantilla de documentación para arquitectura de sistemas y de
+software.
+
+Versión de la plantilla 9.0-ES. (basada en la versión AsciiDoc), Julio 2025
+
+Creada, mantenida y © por Dr. Peter Hruschka, Dr. Gernot Starke y
+contribuyentes. Ver <https://arc42.org>.
+
+# Introducción y Metas
+
+## Vista de Requerimientos
+
+## Metas de Calidad
+
+## Partes interesadas (Stakeholders)
+
+| Rol/Nombre    | Contacto          | Expectativas          |
+|---------------|-------------------|-----------------------|
+| *\<Rol-1\>*   | *\<Contacto-1\>*  | *\<Expectativa-1\>*   |
+| *\<Rol-2\>*   | *\<Contacto-2\>*  | *\<Expectativa-2\>*   |
+
+# Restricciones de la Arquitectura
+
+| Restricción | Descripción |
+|---|---|
+| Independencia de proveedor cloud | La Ley 9986 exige que la plataforma de infraestructura no genere dependencia de un proveedor comercial. La solución debe poder ejecutarse en cualquier nube pública o infraestructura on-premise. Esto determina el uso de Kubernetes como orquestador open source. |
+
+# Alcance y Contexto del Sistema
+
+## Contexto de Negocio
+
+**\<Diagrama o Tabla\>**
+
+**\<optionally: Explanation of external domain interfaces\>**
+
+## Contexto Técnico
+
+**\<Diagrama o Tabla\>**
+
+**\<Opcional: Explicación de las interfases técnicas\>**
+
+**\<Mapeo de Entrada/Salida a canales\>**
+
+# Estrategia de solución
+
+## Estilo Arquitectónico Macro: Event-Driven Híbrido sobre Kubernetes
+
+El sistema combina dos patrones que responden a las dos naturalezas operativas del problema.
+
+## Pipeline ETL orientado a eventos
+
+La mayor parte del volumen del sistema — ingesta de incidentes, actualización del mapa de calor, analítica territorial y bitácora — sigue un flujo lineal: un evento entra al procesador de eventos, un worker lo consume, lo transforma y lo persiste. Estos workers son *stateless*, no exponen APIs ni toman decisiones de negocio. En el orquestador de contenedores escalan automáticamente proporcionalmente al tamaño de la cola, absorbiendo los picos de carga sin intervención manual.
+
+## Microservicios para coordinación operativa
+
+Los componentes con lógica de negocio real — despacho de recursos, protocolos de emergencia del CNE y sincronización offline de unidades de campo — se implementan como microservicios independientes. Cada uno tiene su propio ciclo de despliegue y base de datos, y se comunica con el resto del sistema a través del mismo bus de eventos. La capa de reportes y visualización institucional también son microservicios livianos que leen del datawarehouse.
+
+## Kubernetes como plataforma de orquestación
+
+Ambos segmentos se despliegan sobre un clúster de **Kubernetes**, que provee:
+
+- resiliencia automática ante fallos;
+- *rolling updates* sin downtime;
+- escalado independiente por servicio.
+
+Al ser una plataforma open source que corre en cualquier nube o infraestructura on-premise, cumple además la restricción legal de independencia de proveedor establecida en la **Ley 9986**.
+
+# Vista de Bloques
+
+## Sistema General de Caja Blanca
+
+***\<Diagrama general\>***
+
+Motivación  
+*\<Explicación en texto\>*
+
+Bloques de construcción contenidos  
+*\<Descripción de los bloques de construcción contenidos (Cajas negras)\>*
+
+Interfases importantes  
+*\<Descripción de las interfases importantes\>*
+
+### \<Caja Negra 1\>
+
+*\<Propósito/Responsabilidad\>*
+
+*\<Interfase(s)\>*
+
+*\<(Opcional) Características de Calidad/Performance\>*
+
+*\<(Opcional) Ubicación Archivo/Directorio\>*
+
+*\<(Opcional) Requerimientos Satisfechos\>*
+
+*\<(Opcional) Riesgos/Problemas/Incidentes Abiertos\>*
+
+### \<Caja Negra 2\>
+
+*\<plantilla de caja negra\>*
+
+### \<Caja Negra N\>
+
+*\<Plantilla de caja negra\>*
+
+### \<Interfase 1\>
+
+...​
+
+### \<Interfase m\>
+
+## Nivel 2
+
+### Caja Blanca *\<bloque de construcción 1\>*
+
+*\<plantilla de caja blanca\>*
+
+### Caja Blanca *\<bloque de construcción 2\>*
+
+*\<plantilla de caja blanca\>*
+
+...​
+
+### Caja Blanca *\<bloque de construcción m\>*
+
+*\<plantilla de caja blanca\>*
+
+## Nivel 3
+
+### Caja Blanca \<\_bloque de construcción x.1\_\>
+
+*\<plantilla de caja blanca\>*
+
+### Caja Blanca \<\_bloque de construcción x.2\_\>
+
+*\<plantilla de caja blanca\>*
+
+### Caja Blanca \<\_bloque de construcción y.1\_\>
+
+*\<plantilla de caja blanca\>*
+
+# Vista de Ejecución
+
+## \<Escenario de ejecución 1\>
+
+-   *\<Inserte un diagrama de ejecución o la descripción del
+    escenario\>*
+
+-   *\<Inserte la descripción de aspectos notables de las interacciones
+    entre los bloques de construcción mostrados en este diagrama.\>*
+
+## \<Escenario de ejecución 2\>
+
+## ...​
+
+## \<Escenario de ejecución n\>
+
+# Vista de Despliegue
+
+## Nivel de infraestructura 1
+
+***\<Diagrama General\>***
+
+Motivación  
+*\<Explicación en forma textual\>*
+
+Características de Calidad/Rendimiento  
+*\<Explicación en forma textual\>*
+
+Mapeo de los Bloques de Construcción a Infraestructura  
+*\<Descripción del mapeo\>*
+
+## Nivel de Infraestructura 2
+
+### *\<Elemento de Infraestructura 1\>*
+
+*\<diagrama + explicación\>*
+
+### *\<Elemento de Infraestructura 2\>*
+
+*\<diagrama + explicación\>*
+
+...​
+
+### *\<Elemento de Infraestructura n\>*
+
+*\<diagrama + explicación\>*
+
+# Conceptos Transversales (Cross-cutting)
+
+## *\<Concepto 1\>*
+
+*\<explicación\>*
+
+## *\<Concepto 2\>*
+
+*\<explicación\>*
+
+...​
+
+## *\<Concepto n\>*
+
+*\<explicación\>*
+
+# Decisiones de Diseño
+
+# Requerimientos de Calidad
+
+## Vista General de Requerimientos de Calidad
+
+## Escenarios de Calidad
+
+# Riesgos y deuda técnica
+
+# Glosario
+
+| Término          | Definición          |
+|------------------|---------------------|
+| *\<Término-1\>*  | *\<definición-1\>*  |
+| *\<Término-2\>*  | *\<definición-2\>*  |
+
+\newpage
+
+## Fuente: Topologia-datos-persistencia.md
+
+# Sección 4 — Topología de Datos y Persistencia
+
+**Proyecto:** CivisGuard Analytics — Sistema Nacional de Coordinación de Emergencias e Incidentes Institucionales
+**RFP:** MGPSP-DGTIC-RFP-2026-007
+**Marco de documentación:** arc42 (Hruschka & Starke, 2024), Sección 4
+**ADRs asociados:** ADR-001 (On-Premise), ADR-0002 (Analítico/Asíncrono), **ADR-003 (Persistencia políglota distribuida)**
+**Fecha:** 2026-07-19
+**Elaborado por:** Firma Consultora Cenfosoft
+
+---
+
+## 4.1 Introducción y alineación con las decisiones previas
+
+Esta sección formaliza la **Topología de Datos y Persistencia** de CivisGuard Analytics, alineándose con tres decisiones arquitectónicas previas:
+
+1. **ADR-001 — Entorno Operativo On-Premise.** Todos los almacenes se despliegan dentro del perímetro del Ministerio de Gobernación, en servidores físicos propios, accesibles exclusivamente por VPN. No se usa ningún servicio gestionado de nube pública.
+2. **ADR-0002 — Arquitectura Orientada al Análisis de Datos.** El sistema tiene una **doble naturaleza**: (a) un núcleo **analítico/asíncrono** (ETL/ELT, BI, mapas de calor) con ventana de latencia tolerable, y (b) **microservicios de coordinación operativa** (despacho, protocolos del CNE, sincronización *offline*) con exigencias de baja latencia. La topología debe **servir a ambas naturalezas sin que una degradue a la otra**.
+3. **ADR-003 — Persistencia políglota distribuida.** Cada microservicio, alineado a un *Bounded Context* de DDD, es propietario exclusivo de su(s) almacén(es) y selecciona la tecnología óptima. La integración es **exclusivamente por eventos** (Kafka) y APIs contractuales.
+
+> **Coherencia con el RFP.** La topología resuelve la tensión entre el RFP (despacho ≤ 90 s, mapa de calor ≤ 20 s) y el ADR-0002 (analítico/asíncrono) mediante el modelo **híbrido** del Documento Base: la capa operacional usa almacenes OLTP de baja latencia, y la capa analítica usa almacenes OLAP/cache alimentados por eventos.
+
+---
+
+## 4.2 Justificación: políglota distribuida vs. base de datos compartida
+
+La decisión detallada se documenta en el **ADR-003** y se contrasta visualmente en el anexo **`matriz-comparativa-persistencia.md`**. Síntesis:
+
+- **No se usa una base de datos compartida** porque (a) acoplaría los esquemas de las seis instituciones (violando RNF-06), (b) mezclaría perfiles OLTP/OLAP (violando RNF-02), (c) crearía un punto único de fallo con *blast radius* máximo (violando RNF-01), (d) modelaría antinaturalmente la bitácora inmutable (violando RNF-04) y (e) expondría todos los datos personales en un único esquema (aumentando el riesgo bajo Ley 8968).
+
+- **Se usa una arquitectura de persistencia políglota distribuida** porque (a) aísla cada *bounded context* con su tecnología óptima, (b) permite consistencia fuerte dentro del agregado y eventual entre servicios (Sagas), (c) implementa la bitácora inmutable por diseño mediante *Event Sourcing*, (d) cumple la Ley 9986 con un *stack* 100 % *open source*, y (e) absorbe la naturaleza híbrida analítica/operativa del ADR-0002.
+
+La matriz comparativa demuestra que esta opción **no incumple ningún criterio** del RFP y **satisface óptimamente 15 de 20 criterios**, frente a 9 incumplimientos de la BD compartida.
+
+---
+
+## 4.3 Topología por *Bounded Context*
+
+CivisGuard Analytics se descompone en **nueve *Bounded Contexts***, cada uno propietario de su(s) almacén(es). La descomposición se deriva del análisis del dominio del RFP (Procesos 1–3, glosario, RNF-03 y RNF-06) y del *Ubiquitous Language* institucional.
+
+### 4.3.1 Mapeo *Bounded Context* → Almacén → Tecnología → Modelo de consistencia
+
+| # | *Bounded Context* | Responsabilidad | Tecnología (open source) | Consistencia | Patrón principal |
+|:--:|---|---|---|:--:|---|
+| **BC1** | **Incidentes** | Registro, clasificación, ciclo de vida, prioridad | **PostgreSQL 16** (particionado por `institucion_origen_id`) | Fuerte (ACID) | Repository, Aggregate `Incidente` |
+| **BC2** | **Despacho y Recursos** | Asignación, tracking, SLA, ubicación de recursos | **PostgreSQL 16** + **Redis 7** (cache GEO, TTL 5 s) | Fuerte (ACID); eventual en cache | CQRS (escritura PG, lectura Redis) |
+| **BC3** | **Bitácora y Auditoría** | Registro inmutable e irrefutable (RNF-04), retención ≥ 5 años | **Apache Kafka 3.7** (event store) + proyección *append-only* en **PostgreSQL** | Eventual (proyección); Kafka es verdad canónica | **Event Sourcing** + *Outbox* |
+| **BC4** | **Analítica y BI** | Mapa de calor, reincidencia, reportes consolidados | **ClickHouse 24** (OLAP columnar) vía Kafka Connect (CDC) | Eventual (latencia s–min, coherente con ADR-0002) | CQRS (lado lectura) |
+| **BC5** | **Geoespacial** | Mapa de calor operacional (≤ 20 s), zonas de riesgo | **PostGIS 3.4** + **Redis GEO** (cache incidentes activos) | Fuerte en PostGIS; eventual en cache | Repository geoespacial; índices GiST |
+| **BC6** | **Identidad y Acceso** | Usuarios, roles, RBAC por institución, MFA | **Keycloak 24** (LDAP integrado) + **PostgreSQL** | Fuerte | RBAC + ABAC |
+| **BC7** | **Sincronización Offline** | Almacenamiento local en campo, reconciliación (RNF-05) | **SQLite 3** (embebido) + **Kafka** (cola eventos pendientes) | Eventual con CRDT | *Offline-First*; *Outbox* idempotente |
+| **BC8** | **Mensajería y Eventos** | Bus EDA — *source of truth*, *pub/sub* | **Apache Kafka 3.7** + **Apicurio Schema Registry** | Eventual; orden por partición | *Pub/Sub*; CDC (Debezium) |
+| **BC9** | **Archivos y Evidencia** | Multimedia, exportaciones Contraloría, *archival* WORM | **MinIO** (Object Lock WORM) + **PostgreSQL** (metadatos) | Fuerte metadatos; inmutable objetos | Repository de objetos; versionado |
+
+### 4.3.2 Justificación de cada selección tecnológica
+
+**PostgreSQL 16** (BC1, BC2, BC3-proyección, BC5, BC6, BC9). Motor ACID *open source* (PostgreSQL License, BSD-like) con **RLS nativa**, particionamiento declarativo, PostGIS y replicación *streaming*. Se elige por: (a) Ley 9986 (sin *lock-in*); (b) RLS para RNF-03; (c) ACID para RNF-02; (d) replicación para RNF-01. Referencias: Kleppmann (2017), Richardson (2019).
+
+**Apache Kafka 3.7** (BC3 event store, BC7, BC8). *Event streaming* *open source* (Apache 2.0). Se elige por: (a) *source of truth* del *Event Sourcing* (RNF-04, inmutabilidad por diseño); (b) retención ≥ 5 años (Contraloría); (c) escalado con particiones para 250 incidentes/min (RNF-02); (d) orden por `incidente_id`; (e) CDC con Debezium para alimentar ClickHouse y Redis. Referencias: Kleppmann (2017), Richardson (2019).
+
+**ClickHouse 24** (BC4). OLAP columnar *open source* (Apache 2.0). Se elige por: (a) escaneo columnar sub-segundo sobre millones de incidentes (RNF-02, ≤ 20 s); (b) compresión que reduce coste on-premise; (c) alimentación por Kafka Connect; (d) Ley 9986 (sustituible por DuckDB/Druid).
+
+**Redis 7 / Valkey** (BC2, BC5). Cache en memoria (RSALv2/SSPL; alternativa **Valkey** BSD). Se elige por: (a) latencia sub-ms para cache de recursos y mapa de calor (RNF-02); (b) estructuras GEO nativas; (c) Sentinel para *failover* (RNF-01). Se prefiere **Valkey** para cumplimiento estricto Ley 9986.
+
+**PostGIS 3.4** (BC5). Extensión geoespacial de PostgreSQL (GPL). Índices GiST para zonas de riesgo y reincidencia territorial (Proceso 3 del RFP). Open source.
+
+**Keycloak 24** (BC6). IAM *open source* (Apache 2.0). RBAC + ABAC por institución (RNF-03, RNF-06), LDAP/AD del Ministerio, MFA, sesiones para 1.200–2.000 usuarios concurrentes.
+
+**SQLite 3** (BC7). BD embebida *public domain*. Operación local sin conectividad (RNF-05), sincronización idempotente, resolución de conflictos CRDT.
+
+**MinIO** (BC9). Object storage S3-compatible (AGPLv3). *Object Lock* WORM para evidencia y exportaciones inmutables (RNF-04, Contraloría ≥ 5 años). API S3 estándar (sustituible por Ceph).
+
+**Apicurio Schema Registry** (BC8). Registro de esquemas (Apache 2.0). Gobernanza de *event schemas* con compatibilidad *backward* obligatoria.
+
+---
+
+## 4.4 Modelos de consistencia por almacén
+
+| *Bounded Context* | Modelo | Justificación |
+|---|:--:|---|
+| BC1 Incidentes | **Fuerte (ACID)** | El ciclo de vida exige transiciones consistentes; una pérdida implica un caso sin responsable (RNF-02). |
+| BC2 Despacho | **Fuerte** en asignación; **eventual** en cache | La asignación no admite duplicación; el cache tolera 5 s (revalidado por CDC). |
+| BC3 Bitácora | **Eventual** (proyección); Kafka es **canónica** | RNF-04 garantiza inmutabilidad por Kafka; la proyección es reconstruible. |
+| BC4 Analítica | **Eventual** | Coherente con ADR-0002; latencia tolerable para planificación. |
+| BC5 Geoespacial | **Fuerte** PostGIS; **eventual** Redis | Zonas = datos maestros; incidentes activos se actualizan por CDC ≤ 20 s. |
+| BC6 IAM | **Fuerte** | La revocación de acceso debe ser inmediata (RNF-03). |
+| BC7 Offline | **Eventual** con CRDT | Por naturaleza offline; reconciliación idempotente. |
+| BC8 Bus | **Eventual**; orden por partición | Asíncrono; orden por `incidente_id` garantiza secuencia. |
+| BC9 Archivos | **Fuerte** metadatos; **inmutable** objetos | Metadatos consultables; objetos son evidencia WORM. |
+
+### 4.4.1 Transacciones distribuidas: patrón Saga
+
+Las operaciones que cruzan *bounded contexts* **no** usan 2PC/XA. Se resuelven con **Saga** (Richardson, 2019):
+
+- **Saga orquestada** para el flujo crítico **Despacho de Recurso** (Proceso 2): el *orchestrator* coordina (1) reservar recurso en BC2, (2) registrar entrada en bitácora BC3, (3) publicar `RecursoDespachadoEvent`, (4) notificar instituciones. Cada paso tiene **acción compensatoria**.
+- **Saga coreografiada** para flujos analíticos (Proceso 3): `IncidenteRegistradoEvent` dispara, en paralelo, actualización del cache (BC5), proyección al DW (BC4) y evaluación de alertas.
+
+### 4.4.2 Patrón CQRS
+
+- **BC2 Despacho**: escrituras en PostgreSQL; lecturas (recursos cercanos) en Redis GEO, actualizado por CDC.
+- **BC4 Analítica**: escrituras (ingesta) en Kafka; lecturas (mapa de calor, reportes) en ClickHouse, proyectado por Kafka Connect.
+- **BC3 Bitácora**: escritura (append) en Kafka; lectura (consulta histórica) en la proyección PostgreSQL.
+
+### 4.4.3 *Event Sourcing* (bitácora inmutable)
+
+Cada acción sobre un incidente (`IncidenteRegistrado`, `IncidenteClasificado`, `RecursoDespachado`, `CasoEscalado`, `CasoCerrado`) se persiste como **evento inmutable** en Kafka (tópico `bitacora.incidentes`, retención ≥ 5 años). La proyección PostgreSQL es un *read model* reconstruible. La inmutabilidad se garantiza por: (a) eventos Kafka *append-only* por construcción; (b) la proyección se crea con rol sin UPDATE/DELETE; (c) acceso administrativo segregado por RBAC y auditado.
+
+### 4.4.4 *Outbox Pattern*
+
+Cada microservicio que origina eventos escribe en su BD una tabla `outbox` dentro de la **misma transacción** del cambio de estado; Debezium CDC lee `outbox` y publica en Kafka. Esto garantiza la atomicidad entre el cambio y la publicación (Richardson, 2019).
+
+---
+
+## 4.5 Seguridad y multi-tenancy (RNF-03, Ley 8968)
+
+### 4.5.1 Aislamiento por institución
+
+Doble barrera: (1) **particionamiento físico por `institucion_id`** en PostgreSQL y Kafka; (2) **RLS** en PostgreSQL con políticas que restringen filas según el `institucion_id` del JWT (Keycloak):
+
+```sql
+CREATE POLICY aislamiento_institucional ON incidentes
+FOR SELECT
+USING (institucion_origen_id = current_setting('app.institucion_id')::int
+       OR has_role(current_user, 'cne_supervisor', 'member'));
+```
+
+El rol `cne_supervisor` tiene visibilidad consolidada para Protocolos de Emergencia Nacional (RNF-06), **sin** acceso a datos internos (RNF-03).
+
+### 4.5.2 Cifrado
+
+- **En tránsito:** TLS 1.3 en todas las conexiones; acceso al perímetro sólo por VPN (ADR-001).
+- **En reposo:** LUKS a nivel volumen; pgcrypto para columnas sensibles; SSE en MinIO.
+
+### 4.5.3 Auditoría de acceso a datos personales (Ley 8968)
+
+Todo acceso a datos personales se registra como `DatoPersonalAccedido` en la bitácora (BC3), con identidad, institución, marca de tiempo y justificación.
+
+---
+
+## 4.6 Estrategia *Offline-First* (RNF-05)
+
+1. **Operación local.** El funcionario registra/actualiza incidentes en SQLite local sin conectividad.
+2. **Outbox local.** Cada cambio se escribe en `outbox` local con `evento_id` UUID (idempotencia).
+3. **Reconexión.** El cliente envía eventos pendientes; el microservicio los aplica **idempotentemente** (deduplicación por `evento_id`).
+4. **Resolución de conflictos.** Marcas de tiempo vectoriales; *merge* automático para campos no conflictivos; para conflictivos, prevalece la versión más reciente y se registra la divergencia en la bitácora.
+
+---
+
+## 4.7 Retención y cumplimiento normativo
+
+| Almacén | Retención | Cumplimiento |
+|---|---|---|
+| Kafka `bitacora.incidentes` | **≥ 5 años** | Contraloría; RNF-04 |
+| Proyección PG `bitacora_eventos` | **≥ 5 años** (particionado mensual) | Idem |
+| MinIO (evidencia, exportaciones) | **≥ 5 años** Object Lock WORM | Inmutabilidad Contraloría |
+| PostgreSQL operacional | **3 años caliente** + *archival* MinIO | Equilibrio consulta/coste |
+| ClickHouse | **5 años** (particionado mensual, TTL) | Analítica histórica |
+| Redis | **Volátil** (TTL 5 s–24 h) | Cache; no es fuente de verdad |
+| SQLite local | **30 días** + purga tras sync | Minimización Ley 8968 |
+
+### 4.7.1 Exportación para la Contraloría
+
+Se genera desde el event store Kafka (o proyección PG) en CSV/JSON/PDF firmado, se empaqueta en MinIO con Object Lock WORM y se entrega por VPN + firma digital. Inmutable y verificable (hash SHA-256).
+
+---
+
+## 4.8 Estrategia de respaldo y recuperación (RNF-01)
+
+| Almacén | RPO | RTO | Mecanismo |
+|---|:--:|:--:|---|
+| PostgreSQL (BC1, BC2, BC5, BC6, BC9) | 0 s | < 30 s | *Streaming replication* síncrona + Patroni; WAL archiving a MinIO |
+| Kafka (BC3, BC8) | 0 s | < 60 s | Factor replicación 3, `min.insync.replicas=2`; KRaft |
+| ClickHouse (BC4) | < 5 min | < 2 min | ReplicatedMergeTree; reconstruible desde Kafka |
+| Redis (BC2, BC5) | < 5 s | < 30 s | Sentinel + AOF; reponible desde PostgreSQL |
+| MinIO (BC9) | 0 s | < 2 min | Erasure coding + replicación entre *sites* |
+| Keycloak (BC6) | 0 s | < 60 s | Replicación PostgreSQL subyacente |
+
+El **RTO agregado** ≤ 2 min porque: (a) almacenes críticos (PG, Kafka) *failover* < 60 s; (b) almacenes reconstruibles desde Kafka (ClickHouse, Redis) aceptan < 2 min; (c) el *blast radius* acotado de la políglota permite que un fallo local no caiga todo el sistema.
+
+---
+
+## 4.9 Tabla resumen de tecnologías (cumplimiento Ley 9986)
+
+| Tecnología | Licencia | Sustituible por | Cumple |
+|---|---|---|:--:|
+| PostgreSQL 16 | PostgreSQL License (BSD-like) | — | ✓ |
+| Apache Kafka 3.7 | Apache 2.0 | RedPanda, Pulsar | ✓ |
+| ClickHouse 24 | Apache 2.0 | DuckDB, Druid | ✓ |
+| Redis 7 / Valkey | RSALv2/SSPL · BSD (Valkey) | Valkey (LF), KeyDB | ✓ |
+| PostGIS 3.4 | GPL | — (extensión PG) | ✓ |
+| Keycloak 24 | Apache 2.0 | Authentik, ORY Kratos | ✓ |
+| SQLite 3 | Public Domain | — | ✓ |
+| MinIO | AGPLv3 | Ceph, Rook | ✓ |
+| Apicurio | Apache 2.0 | Confluent Schema Registry | ✓ |
+
+---
+
+## 4.10 Diagramas asociados
+
+- **Diagrama de Topología de Datos (Mermaid):** `docs/c4-models/topologia-datos.md`
+- **Diagrama editable (draw.io):** `docs/c4-models/topologia-datos.drawio`
+- **Matriz comparativa (anexo visual):** `docs/src-sad/matriz-comparativa-persistencia.md`
+
+---
+
+## 4.11 Referencias (APA 7ª ed.)
+
+- Evans, E. (2003). *Domain-Driven Design: Tackling Complexity in the Heart of Software*. Addison-Wesley.
+- Fowler, M. (2015, 25 de marzo). *Microservices: A definition of this new architectural term*. https://martinfowler.com/articles/microservices.html
+- Hruschka, P., & Starke, G. (2024). *arc42 — Template for architecture documentation and communication* (versión 8.2). https://arc42.org
+- Kleppmann, M. (2017). *Designing Data-Intensive Applications*. O'Reilly Media.
+- Newman, S. (2021). *Building Microservices* (2.ª ed.). O'Reilly Media.
+- Richardson, C. (2019). *Microservices Patterns*. Manning Publications.
+- Vernon, V. (2013). *Implementing Domain-Driven Design*. Addison-Wesley.
+- Asamblea Legislativa de Costa Rica. (2011). *Ley N.° 8968, Ley de Protección de la Persona frente al Tratamiento de sus Datos Personales*. La Gaceta N.° 103.
+- Asamblea Legislativa de Costa Rica. (2018). *Ley N.° 9986, Ley de la Contratación Pública*. La Gaceta N.° 97.
+- Brown, S. (2024). *The C4 model for visualising software architecture*. https://c4model.com
+
+\newpage
+
+## Fuente: adrs/0002-arquitectura-orientada-al-analisis-de-datos.md
+
+# 2. Arquitectura Orientada al Analisis de Datos
+
+Date: 2026-07-05
+
+## Status
+
+2026-07-05 proposed
+
+## Context
+
+El sistema propuesto coexiste con los sistemas críticos de control de emergencias y despacho que ya operan de forma independiente en cada entidad de respuesta (Bomberos, Cruz Roja, Comisión Nacional de Emergencias - CNE, y el Sistema 9-1-1). Estas instituciones requieren inmediatez absoluta en sus operaciones diarias.
+
+Sin embargo, el objetivo de nuestra solución no es el despacho en tiempo real ni la gestión operativa inmediata de incidentes, sino actuar como un núcleo centralizador que reciba información de todas estas fuentes para facilitar la coordinación interinstitucional, la planeación a mediano/largo plazo y la optimización de la respuesta estatal ante emergencias.
+
+## Decision
+
+Se ha decidido diseñar el sistema bajo un enfoque puramente analítico y asíncrono (Business Intelligence / Data Analytics), estableciendo un desacoplamiento total de los sistemas operativos de despacho de cada institución.
+
+La ingesta de datos se realizará mediante procesos programados o por lotes (ETL/ELT), aceptando que el sistema operará con una ventana de retraso tolerable (por ejemplo, actualizaciones horarias o diarias). El sistema no procesará telemetría ni despacho en tiempo real.
+
+## Consequences
+
+**Aspectos Positivos (Beneficios)**
+- Cero Impacto en la Operación Crítica: Al no exigir sincronía ni respuestas en milisegundos, las consultas analíticas pesadas del sistema propuesto no afectarán el rendimiento ni la estabilidad de los sistemas de despacho locales de las instituciones (esenciales para salvar vidas).
+
+- Flexibilidad en la Ingesta de Datos: Permite diseñar interfaces de integración más sencillas y robustas. Si una institución sufre una caída temporal en su sistema, los datos pendientes pueden enviarse en el siguiente lote sin romper el flujo de trabajo general.
+
+- Foco en el Valor Estratégico: La arquitectura se optimizará para el modelado de datos, la generación de reportes consolidados, tableros de control (dashboards) y mapas de calor que ayuden a la CNE y demás entes a planificar recursos y detectar patrones de riesgo.
+
+**Aspectos Negativos (Riesgos o Limitaciones)**
+- Latencia en la Toma de Decisiones: El sistema no puede ser utilizado para coordinar tácticas en el segundo exacto en que ocurre un incidente mayor; su uso es estrictamente estratégico y posterior al evento inmediato.
+
+- Complejidad en la Homogeneización de Datos: Cada entidad (9-1-1, Bomberos, etc.) maneja formatos, codificaciones y estructuras de datos nativas muy distintas. El motor de transformación del sistema deberá hacer un esfuerzo considerable para estandarizar los datos bajo un mismo modelo conceptual estatal.
+
+\newpage
+
+## Fuente: adrs/0003-persistencia-poliglota-distribuida.md
+
+# ADR-003: Arquitectura de Persistencia Políglota Distribuida (Database-per-Service)
+
+**Date:** 2026-07-19
+**Status:** 2026-07-19 proposed
+**Decisionmakers:** Firma Consultora Cenfosoft (G. Castro, D. Cárdenas, A. Cascante, R. Villareal)
+**Supersedes:** —
+**Relates to:** ADR-001 (Entorno Operativo On-Premise), ADR-0002 (Arquitectura Orientada al Análisis de Datos)
+**RFP de referencia:** MGPSP-DGTIC-RFP-2026-007 (CivisGuard Analytics)
+
+---
+
+## Contexto
+
+El sistema **CivisGuard Analytics** debe operar, conforme al **ADR-001**, sobre infraestructura **on-premise** del Ministerio de Gobernación, Policía y Seguridad Pública, con acceso restringido exclusivamente por VPN y descartando cualquier proveedor de nube pública o híbrida externa. El **ADR-0002** definió un enfoque **analítico/asíncrono** (ETL/ELT) desacoplado de los sistemas de despacho en tiempo real de cada institución, mientras que la "Estrategia de solución" del Documento Base estableció un **Estilo Arquitectónico Macro: Event-Driven Híbrido sobre Kubernetes**, combinando:
+
+1. Un **pipeline ETL orientado a eventos** (ingesta de incidentes, mapa de calor, analítica territorial, bitácora), con workers *stateless* que escalan automáticamente según el tamaño de la cola.
+2. **Microservicios de coordinación operativa** (despacho de recursos, protocolos de emergencia del CNE, sincronización *offline* de unidades de campo), cada uno con su propio ciclo de despliegue y comunicación vía el bus de eventos.
+
+El RFP MGPSP-DGTIC-RFP-2026-007 impone restricciones que **condicionan directamente** la estrategia de persistencia:
+
+| Restricción (RFP / Ley) | Implicación directa sobre la persistencia |
+|---|---|
+| **RNF-01** Disponibilidad 24/7/365; indisponibilidad no planificada ≤ 2 min | Requiere redundancia de almacenes, *failover* automático y RPO/RTO agresivos por servicio. |
+| **RNF-02** Despacho crítico ≤ 90 s; mapa de calor visible ≤ 20 s; picos de 250 incidentes/min | La capa operacional (despacho) exige escrituras ACID de baja latencia; la capa analítica exige lecturas agregadas sub-segundo → perfiles de carga opuestos que un único almacén no optimiza simultáneamente. |
+| **RNF-03** Visibilidad diferenciada por institución y perfil | Requiere aislamiento de datos por *tenant* institucional y control de acceso a nivel de fila (RLS) o particionamiento físico por institución. |
+| **RNF-04** Bitácora operativa inmutable, irrefutable; retención ≥ 5 años (Contraloría) | Exige un almacén *append-only* / WORM con integridad verificable, fuera del alcance de un CRUD convencional. |
+| **RNF-05** Operación en conectividad degradada; sincronización posterior sin pérdida ni duplicación | Requiere almacenamiento local en unidades de campo (*offline-first*) con resolución de conflictos al reconectar (idempotencia / CRDT / *outbox*). |
+| **RNF-06** Autonomía institucional + vista nacional consolidada + Protocolo de Emergencia Nacional del CNE | Cada institución debe poder configurar su propio sub-modelo sin acoplarse al esquema de las demás. |
+| **Ley 9986** — prohibición de dependencia tecnológica de un único proveedor comercial | Toda tecnología de persistencia debe ser *open source* con soporte multi-vendor/community. |
+| **Ley 8968** — principios de finalidad, proporcionalidad y seguridad | Datos personales cifrados, minimización por institución, trazabilidad de acceso. |
+| **Normativa Contraloría** — retención histórica ≥ 5 años | Estrategia de *archival* y exportación inmutable de largo plazo. |
+
+El Documento Base ya declaró, entre sus principios de diseño, **"persistencia políglota distribuida"** y **"patrones tácticos de Domain-Driven Design (DDD)"**; el presente ADR formaliza y justifica técnicamente esa declaración inicial.
+
+---
+
+## Decisión
+
+Se adopta una **arquitectura de persistencia políglota distribuida** bajo el principio **database-per-service** (Newman, 2021; Fowler, 2015; Richardson, 2019), con las siguientes reglas obligatorias:
+
+1. **Propiedad exclusiva del dato.** Cada microservicio —alineado a un *Bounded Context* de DDD (Evans, 2003; Vernon, 2013)— es propietario **exclusivo** de su(s) almacén(es) de datos. Ningún microservicio accede por JDBC/ODBC/SQL directo al almacén de otro; la integración entre servicios se realiza **únicamente** mediante eventos publicados en el bus EDA (Apache Kafka) y APIs contractuales (REST/gRPC sobre el bus).
+
+2. **Políglota por contexto.** La tecnología de cada almacén se selecciona según el perfil de carga del *Bounded Context* que sirve (OLTP transaccional, OLAP analítico, geoespacial, documental *append-only*, clave-valor cache, *event store*, almacenamiento de objetos), no por uniformidad organizacional.
+
+3. **Open source y sustituibilidad.** Todas las tecnologías de persistencia elegidas son *open source* con comunidad activa y soporte multi-vendor, para cumplir la **Ley 9986**. Se excluyen motores propietarios con *lock-in* irrescindible.
+
+4. **Consistencia eventual por defecto, fuerte dentro del agregado.** Las transacciones distribuidas entre microservicios se resuelven con el patrón **Saga** (orchestration/choreography) y **Outbox Pattern**; la consistencia fuerte (ACID) se garantiza **únicamente dentro del agregado DDD** y de su almacén propietario. La bitácora (RNF-04) usa **Event Sourcing** para garantizar inmutabilidad e irrefutabilidad.
+
+5. **Aislamiento institucional.** Los almacenes que sirven a múltiples instituciones implementan **Row-Level Security (RLS)** y/o particionamiento por `institucion_id`.
+
+6. **Offline-First en el borde.** Las unidades de campo operan contra un almacén local embebido (SQLite) que se sincroniza con el microservicio correspondiente mediante eventos idempotentes y resolución de conflictos basada en marcas de tiempo vectoriales / CRDT.
+
+---
+
+## Alternativas consideradas
+
+### Alternativa A — Base de datos compartida monolítica (*Single Shared Database*)
+
+Un único motor relacional centralizado, con un esquema único compartido por todos los módulos.
+
+**Razones del descarte:**
+- **Acoplamiento estructural:** cualquier cambio de esquema solicitado por una institución (RNF-06) impacta el esquema compartido y a las demás instituciones. Anti-patrón *Shared Database* (Newman, 2021; Fowler, 2015).
+- **Punto único de fallo:** la RNF-01 exige indisponibilidad ≤ 2 min; un único almacén es el peor caso de *blast radius* (Kleppmann, 2017).
+- **Mezcla de perfiles de carga opuestos:** las escrituras OLTP de despacho (RNF-02) compiten con las consultas OLAP agregadas del mapa de calor, degradando ambos (Kleppmann, 2017; Richardson, 2019).
+- **Violación de la RNF-03:** la visibilidad diferenciada se vuelve frágil al depender exclusivamente de RLS sobre un esquema único.
+- **Escalabilidad vertical limitada** por la restricción on-premise del ADR-001 (sin elasticidad de nube).
+
+### Alternativa B — *Database-per-service* con tecnología uniforme (sin políglota)
+
+Cada microservicio posee su propia base de datos, pero **todas** utilizan el mismo motor relacional (p. ej., PostgreSQL).
+
+**Razones del descarte:**
+- **Suboptimización por contexto:** la bitácora inmutable (RNF-04) se modela de forma antinatural en un CRUD relacional, cuando un *event store* o un almacén *append-only* resuelve el requisito por construcción.
+- **OLAP sobre OLTP:** la analítica territorial y el mapa de calor (RNF-02, ≤20 s) exigen escaneos columnares de millones de incidentes; un motor OLTP requiere vistas materializadas e índices redundantes, multiplicando el coste de infraestructura on-premise.
+- **Geoespacial de alto volumen:** el mapa de calor y la reincidencia por zona se benefician de extensiones geoespaciales nativas (PostGIS) y caches (Redis GEO), no de un único motor uniforme.
+- **No aprovecha el *event store* nativo del bus EDA** ya decidido (Kafka).
+
+### Alternativa C — **Persistencia políglota distribuida (ELEGIDA)**
+
+*Database-per-service* + tecnología especializada por *Bounded Context*, integración exclusivamente por eventos/APIs, consistencia eventual entre servicios y fuerte dentro del agregado, todo *open source*. Ver *Consequences* y la Sección 4 del SAD para el mapeo almacén→*bounded context*→tecnología→modelo de consistencia. Esta alternativa **maximiza** el cumplimiento simultáneo de las seis RNF y las siete restricciones legales del RFP.
+
+---
+
+## Consequences
+
+### Aspectos positivos (beneficios)
+
+- **RNF-01 (Disponibilidad):** el fallo de un almacén afecta sólo a su *bounded context* (*blast radius* acotado); cada almacén se replica con su propio mecanismo de *failover* (streaming replication en PostgreSQL, réplicas en Kafka, Sentinel en Redis, erasure coding en MinIO), posibilitando RPO/RTO por servicio alineados a ≤ 2 min.
+- **RNF-02 (Velocidad):** la separación OLTP (PostgreSQL) / OLAP columnar (ClickHouse) / cache geoespacial (Redis GEO) permite optimizar cada ruta: escritura ACID < 50 ms para despacho, lectura agregada < 200 ms para mapa de calor, propagación del cache < 20 s vía CDC (Kafka Connect).
+- **RNF-03 (Visibilidad diferenciada):** el aislamiento físico por *bounded context* + RLS por `institucion_id` + particionamiento garantiza que Bomberos no pueda acceder al esquema policial ni la CCSS al táctico, por construcción.
+- **RNF-04 (Bitácora inmutable):** el *event store* (Kafka, retención ≥ 5 años) + proyección *append-only* implementan la inmutabilidad e irrefutabilidad por diseño.
+- **RNF-05 (Offline-First):** SQLite embebido + sincronización idempotente por eventos permite operar sin conectividad y reconciliar sin duplicación.
+- **RNF-06 (Autonomía + vista consolidada):** cada institución configura su sub-modelo sin acoplamiento; la vista consolidada se construye en el DW (ClickHouse) a partir de eventos publicados.
+- **Ley 9986:** todas las tecnologías (PostgreSQL, ClickHouse, MongoDB, Redis/Valkey, Kafka, MinIO, PostGIS, SQLite) son *open source* sin *lock-in*.
+- **Escalabilidad independiente** sobre Kubernetes, coherente con el estilo Event-Driven Híbrido.
+
+### Aspectos negativos (riesgos y trade-offs)
+
+- **Complejidad operacional:** seis tecnologías de persistencia aumentan la curva de aprendizaje. **Mitigación:** stack observabilidad unificado (Prometheus + Grafana), *backup* unificado, runbooks por almacén, DBA polígota o 2 especializados.
+- **Consistencia eventual entre servicios:** las transacciones que cruzan *bounded contexts* no son ACID globales. **Mitigación:** patrón **Saga** (orquestada para despacho, coreografiada para analítica) + **Outbox Pattern** + idempotencia.
+- **Costos de infraestructura on-premise superiores** a una solución uniforme. **Mitigación:** justificado por el cumplimiento de RNF-01 (riesgo de vida) y RNF-04 (riesgo legal); el coste del *blast radius* de una BD compartida supera el coste marginal.
+- **Gobernanza de datos:** requiere *schema registry* versionado. **Mitigación:** Apicurio/Confluent Schema Registry con *backward compatibility* obligatoria.
+- **Latencia de la vista consolidada:** ventana de latencia entre el evento operativo y su disponibilidad en el DW. **Mitigación:** coherente con el ADR-0002; el cache Redis absorbe la latencia del mapa de calor (< 20 s vía CDC).
+
+---
+
+## Cumplimiento normativo
+
+| Normativa | Cumplimiento por diseño |
+|---|---|
+| **Ley 9986** | Stack 100 % open source: PostgreSQL (PostgreSQL License), ClickHouse (Apache 2.0), Redis/Valkey (BSD), Apache Kafka (Apache 2.0), MinIO (AGPLv3), PostGIS (GPL), SQLite (public domain). Ningún componente presenta *lock-in* comercial. |
+| **Ley 8968** | Cifrado en reposo por almacén (LUKS + TDE); minimización por institución vía RLS; trazabilidad de acceso en la bitácora inmutable. |
+| **Normativa Contraloría** | Event store Kafka con retención ≥ 5 años + proyección *append-only* + *archival* a MinIO (Object Lock WORM) para exportación inmutable. |
+| **Leyes 8488 / 8228 / 7410 / CCSS** | Aislamiento por *bounded context* impide el cruce de información entre instituciones salvo el marco legal explícito; el CNE accede a recursos consolidados pero no a datos internos. |
+
+---
+
+## Referencias (APA 7ª ed.)
+
+- Evans, E. (2003). *Domain-Driven Design: Tackling Complexity in the Heart of Software*. Addison-Wesley.
+- Fowler, M. (2015, 25 de marzo). *Microservices: A definition of this new architectural term*. https://martinfowler.com/articles/microservices.html
+- Kleppmann, M. (2017). *Designing Data-Intensive Applications*. O'Reilly Media.
+- Newman, S. (2021). *Building Microservices* (2.ª ed.). O'Reilly Media.
+- Richardson, C. (2019). *Microservices Patterns*. Manning Publications.
+- Vernon, V. (2013). *Implementing Domain-Driven Design*. Addison-Wesley.
+- Asamblea Legislativa de Costa Rica. (2018). *Ley N.° 9986, Ley de la Contratación Pública*. La Gaceta N.° 97.
+- Asamblea Legislativa de Costa Rica. (2011). *Ley N.° 8968, Ley de Protección de la Persona frente al Tratamiento de sus Datos Personales*. La Gaceta N.° 103.
+- Hruschka, P., & Starke, G. (2024). *arc42 — Template for architecture documentation and communication* (versión 8.2). https://arc42.org
+
+\newpage
+
+## Fuente: adrs/001-entorno-operativo.md
+
+# 1. Entorno Operativo
+
+Date: 2026-07-05
+
+## Status
+
+2026-07-05 proposed
+
+## Context
+
+El proyecto requiere desplegar una solución tecnológica para el Departamento de Gobernación. Durante la fase de definición de la arquitectura tecnológica, se evaluaron diferentes opciones de despliegue, incluyendo proveedores de nube pública (como AWS, Azure o Google Cloud) y la infraestructura física local.
+Debido a la naturaleza de los datos gestionados, el entorno regulatorio estricto y las políticas internas de seguridad de la información del departamento, se requiere un control absoluto sobre la soberanía de los datos y el perímetro de red.
+
+## Decision
+
+Se ha decidido utilizar exclusivamente la infraestructura On-Premise existente del Departamento de Gobernación para el alojamiento, procesamiento y almacenamiento de todos los componentes del proyecto.
+Asimismo, se establece que el acceso a estos entornos quedará restringido única y exclusivamente a través de una conexión VPN directa (Virtual Private Network). Queda completamente descartado el uso de cualquier proveedor de nube pública o híbrida externa.
+
+## Consequences
+
+**Aspectos Positivos (Beneficios)**
+- Cumplimiento Normativo Absoluto: Se garantiza la adherencia total a las leyes de protección de datos y gobernación de la información vigentes para el sector público.
+
+- Soberanía y Control de Datos: Toda la información confidencial permanece dentro de los servidores físicos controlados por la institución, minimizando el riesgo de exposición en infraestructuras compartidas.
+
+- Aislamiento del Perímetro: Al no exponer endpoints públicos a internet y canalizar todo el tráfico por VPN, se reduce drásticamente la superficie de ataque frente a amenazas externas.
+
+**Aspectos Negativos (Riesgos o Limitaciones)**
+- Escabilidad Limitada: La capacidad de cómputo y almacenamiento queda sujeta a la disponibilidad del hardware físico actual de la institución. No se cuenta con la elasticidad inmediata que ofrece la nube.
+
+- Mantenimiento Operativo Técnico: El equipo técnico interno de Gobernación asume la responsabilidad total del aprovisionamiento, parches de seguridad de hardware, respaldos físicos y redundancia energética.
+
+- Fricción en el Desarrollo y Pruebas: El acceso exclusivo por VPN puede ralentizar los procesos de integración continua y despliegue (CI/CD), además de requerir una gestión estricta de credenciales y accesos para el equipo de desarrollo.
+
+\newpage
+
+## Fuente: apendice-declaracion-uso-ia.md
+
+# Apéndice — Declaración de Uso de Inteligencia Artificial Generativa
+
+**Proyecto:** CivisGuard Analytics — Sistema Nacional de Coordinación de Emergencias e Incidentes Institucionales
+**RFP:** MGPSP-DGTIC-RFP-2026-007
+**Curso:** PSWE-04 — Diseño de Sistemas de Software — Maestría en Ingeniería de Software — CENFOTEC — Q02 2026
+**Equipo Consultor (Cenfosoft):** Gustavo Castro · David Cárdenas · Allan Cascante · Randy Villareal
+**Fecha:** 2026-07-19
+
+---
+
+## A.1 Marco ético de referencia
+
+Si se usa alguna herramienta de Inteligencia Artificial para realizar este trabajo, el equipo consultor Cenfosoft se guía por las recomendaciones de **Cheng, Calhoun y Reedy (2025)**, en su artículo *"Artificial intelligence-assisted academic writing: recommendations for ethical use"* publicado en *Advances in Simulation*, 10:22, DOI https://doi.org/10.1186/s41077-025-00350-6.
+
+De manera específica, el equipo adopta:
+
+1. **Los tres criterios de Mann et al. (2024)** que Cheng et al. (2025) endosan: *(1)* verificación y garantía humana (*human vetting and guaranteeing*); *(2)* contribución humana sustancial (*substantial human contribution*); y *(3)* reconocimiento y transparencia (*acknowledgement and transparency*).
+2. **Las cuatro preguntas del *Author Checklist* (Fig. 3 de Cheng et al., 2025)** que el equipo aplica al uso de IA en este SAD:
+   - ¿He usado la IA de forma que las ideas, interpretaciones y análisis críticos primarios sean **propios**?
+   - ¿He usado la IA de forma que los humanos **mantengan competencia** en las habilidades nucleares de investigación y escritura?
+   - ¿He **verificado** que todo el contenido (y referencias) sea exacto, confiable y libre de sesgo?
+   - ¿He **divulgado exactamente** cómo se usaron las herramientas de IA y en qué partes del manuscrito?
+3. **Los tres *tiers* éticos (Fig. 2 de Cheng et al., 2025)** como criterio para clasificar cada uso de IA:
+   - **Tier 1 (éticamente más aceptable):** reestructurar texto preexistente, gramática/ortografía, legibilidad, traducción.
+   - **Tier 2 (éticamente contingente):** generar *outline*, resumir, mejorar claridad, *brainstorming* — su uso ético depende de los pasos que el autor tome con el contenido generado.
+   - **Tier 3 (éticamente sospechoso):** redacción *de novo* sin contenido original en el *prompt*, interpretación de datos, revisión de literatura, verificación de plagio — se evita salvo supervisión humana crítica exhaustiva.
+
+---
+
+## A.2 Declaración de uso real de IA en este trabajo
+
+El equipo Cenfosoft declara de forma **transparente y honesta** el uso de herramientas de Inteligencia Artificial Generativa (modelos LLM, ChatGPT/Chatly) en la elaboración del presente Documento de Arquitectura de Software (SAD), en cumplimiento del principio de *acknowledgement and transparency* (Cheng et al., 2025; Mann et al., 2024).
+
+### A.2.1 Alcance del uso de IA
+
+La IA se utilizó **exclusivamente** para los siguientes fines, todos dentro de los **Tier 1** y **Tier 2** de Cheng et al. (2025):
+
+1. **Especificación de formatos y usos.** La IA asistió en la estructura formal de los ADRs (formato estándar *Context–Decision–Consequences*), de la sección arc42 #4 (Topología de Datos y Persistencia) y de la matriz comparativa, aplicando las plantillas de la industria (arc42, C4, ADR de Nygard).
+2. **Comparaciones basadas en documentos previamente analizados por el equipo.** La IA asistió en la **comparación de competencias entre marcos** (p. ej., PostgreSQL vs. ClickHouse para OLAP; Kafka vs. BD relacional para *event store*; Redis vs. cache embebido) y en la **validación de convalidaciones entre marcos** (p. ej., que *database-per-service* es compatible con el Event-Driven Híbrido decidido en el Documento Base). En todos los casos, los documentos fuente (RFP, Documento Base, ADR-001/0002) fueron **leídos, comprendidos y analizados por el equipo humano previamente**; la IA sólo agrupó y formateó las comparaciones a partir del material que el equipo suministró.
+3. **Revisión de los apuntes del equipo.** Basado en la estructura del trabajo del Documento Base, la IA se usó para **revisión de los apuntes** (ortografía, gramática, legibilidad, coherencia de referencias APA) — uso claramente dentro del **Tier 1** de Cheng et al. (2025).
+4. **Agrupamiento y formato de los datos obtenidos.** La IA ayudó al equipo a **agrupar y dar formato** a los datos obtenidos del análisis (p. ej., organización de la tabla de mapeo *Bounded Context → Almacén → Tecnología → Modelo de consistencia*; organización de la matriz comparativa 20-criterios). El **análisis de los datos lo realizó el equipo humano**; la IA no interpretó datos ni generó conclusiones sustantivas.
+
+### A.2.2 Lo que la IA **NO** hizo (contribución humana sustancial)
+
+Conforme al segundo principio de Mann et al. (2024) —*substantial human contribution*— y a la pregunta *(1)* del *Author Checklist* de Cheng et al. (2025), el equipo declara que las siguientes tareas fueron **realizadas exclusivamente por los autores humanos**:
+
+- **Análisis del dominio y descomposición en *Bounded Contexts*.** El equipo identificó los nueve *Bounded Contexts* a partir de la lectura del RFP (Procesos 1–3, glosario, RNF-03/RNF-06) y del *Ubiquitous Language* institucional.
+- **Selección de la estrategia de persistencia (políglota distribuida vs. compartida).** La decisión técnica, su justificación y el análisis de *trade-offs* son **del equipo**. La IA sólo formateó la justificación previamente elaborada por los autores.
+- **Mapeo de tecnologías por *Bounded Context*.** El equipo eligió PostgreSQL, Kafka, ClickHouse, Redis, PostGIS, Keycloak, SQLite, MinIO y Apicurio con base en su experiencia profesional (12+ años del arquitecto principal en sector bancario) y en la literatura citada. La IA no propuso tecnologías por sí sola; validó que las elecciones del equipo eran coherentes con la literatura (Kleppmann, 2017; Richardson, 2019; Newman, 2021).
+- **Análisis del cumplimiento legal (Leyes 8968, 7410, 8488, 8228, 9986, Contraloría).** El equipo realizó el mapeo norma→requisito→tecnología; la IA sólo organizó la tabla.
+- **Defensa de *trade-offs*.** Los argumentos de la matriz comparativa son del equipo.
+- **Verificación de referencias.** El equipo verificó manualmente que cada referencia APA corresponde a una fuente real (no alucinada), conforme a la advertencia de Cheng et al. (2025) sobre referencias fabricadas por LLMs (Athaluri et al., 2023; Bhattacharyya et al., 2023).
+
+### A.2.3 Verificación humana y control de alucinaciones
+
+Conforme a la pregunta *(3)* del *Author Checklist* de Cheng et al. (2025) —exactitud, confiabilidad y ausencia de sesgo—, el equipo aplicó los siguientes **filtros críticos** a toda salida de IA:
+
+1. **Filtro de fuentes.** Toda afirmación técnica sustantiva se respalda con una referencia APA verificada por el equipo (Evans, 2003; Fowler, 2015; Kleppmann, 2017; Newman, 2021; Richardson, 2019; Vernon, 2013; Cheng et al., 2025; Mann et al., 2024; leyes costarricenses consultadas en La Gaceta). Las afirmaciones no referenciadas se eliminaron o se marcaron como opinión del equipo.
+2. **Filtro de coherencia con el Documento Base.** Toda salida de IA se contrastó con el ADR-001 (On-Premise), el ADR-0002 (Analítico/Asíncrono) y la "Estrategia de solución" del Documento Base (Event-Driven Híbrido sobre Kubernetes). Cualquier divergencia se corrigió.
+3. **Filtro de cumplimiento del RFP.** Cada sección se validó contra las seis RNF y las siete restricciones legales del RFP MGPSP-DGTIC-RFP-2026-007.
+4. **Filtro de idoneidad legal (Ley 9986).** El equipo verificó manualmente que cada tecnología propuesta es *open source* y sustituible, descartando opciones con *lock-in*.
+5. **Filtro anti-alucinación de referencias.** Cada cita se verificó contra la fuente original (DOI, ISBN, La Gaceta); no se aceptaron referencias generadas por la IA sin verificación cruzada, conforme a la advertencia explícita de Cheng et al. (2025) sobre la "notoria falta de confiabilidad" de los LLM al citar referencias.
+
+### A.2.4 Competencia humana mantenida
+
+Conforme a la pregunta *(2)* del *Author Checklist* de Cheng et al. (2025) —mantener competencia humana en habilidades nucleares—, el equipo declara que:
+
+- Los autores realizaron el **análisis arquitectónico, el razonamiento de *trade-offs* y la defensa técnica** sin delegar el pensamiento crítico a la IA.
+- La IA se usó como **asistente de productividad** (formato, agrupamiento, comparación de marcos a partir de material ya analizado), no como sustituto del juicio arquitectónico.
+- El equipo mantiene y refuerza su competencia en arquitectura de software, DDD, microservicios y persistencia políglota mediante la revisión manual y la validación crítica de cada salida de IA.
+
+---
+
+## A.3 Apéndice de prompts: indicaciones dadas a la IA y filtros críticos aplicados
+
+Conforme a la indicación del curso: *"Si usa alguna herramienta de Inteligencia Artificial, debe incluir en un apéndice todas las indicaciones (prompts) que Ud. dio y los filtros críticos aplicados por Ud."*, se documentan a continuación los **cinco prompts principales** entregados a la IA y los **filtros críticos** que el equipo aplicó a cada salida. Cada prompt se clasifica según el *tier* ético de Cheng et al. (2025).
+
+### Prompt 1 — Formato de ADR-003 (Tier 1: estructura/formato)
+
+> **Prompt dado:**
+> *"Actúa como arquitecto de software senior. Genera la estructura formal de un Architecture Decision Record (ADR) en formato estándar (Context–Decision–Alternatives Considered–Consequences–References APA), para documentar la decisión de usar persistencia políglota distribuida (database-per-service) en CivisGuard Analytics. La decisión debe alinearse con el ADR-001 (On-Premise) y el ADR-0002 (Analítico/Asíncrono) ya existentes, y cumplir las RNF-01 a RNF-06 del RFP MGPSP-DGTIC-RFP-2026-007. Considera al menos tres alternativas: BD compartida monolítica, BD por servicio uniforme, y políglota distribuida. Usa referencias APA verificables (Newman 2021, Fowler 2015, Richardson 2019, Kleppmann 2017, Evans 2003, Vernon 2013)."*
+
+**Filtros críticos aplicados por el equipo:**
+- Verificación de que las tres alternativas cubren el espacio de decisión (descartadas + elegida).
+- Verificación de que cada consecuencia positiva/negativa se respalda en una RNF o ley específica.
+- Verificación manual de cada referencia APA contra la fuente real (no alucinada).
+- Reescritura humana del texto de justificación para reflejar el análisis propio del equipo.
+
+### Prompt 2 — Comparación de tecnologías por Bounded Context (Tier 2: comparación entre marcos)
+
+> **Prompt dado:**
+> *"Tengo nueve Bounded Contexts para CivisGuard Analytics (Incidentes, Despacho y Recursos, Bitácora y Auditoría, Analítica y BI, Geoespacial, IAM, Sync Offline, Mensajería y Eventos, Archivos y Evidencia). Para cada uno, compárame las opciones de tecnología de persistencia open source más adecuadas al perfil de carga, justificando brevemente. Considera: PostgreSQL 16, Apache Kafka 3.7, ClickHouse 24, Redis/Valkey, PostGIS 3.4, Keycloak 24, SQLite 3, MinIO, Apicurio. La comparación debe cumplir la Ley 9986 (open source, sin lock-in) y las RNF-01 (disponibilidad), RNF-02 (despacho ≤90s, mapa de calor ≤20s), RNF-04 (bitácora inmutable ≥5 años) y RNF-05 (offline-first). Entrega una tabla Bounded Context → Tecnología → Modelo de consistencia → Patrón."*
+
+**Filtros críticos aplicados por el equipo:**
+- Validación de que la elección de cada tecnología corresponde al perfil de carga real del BC (no a preferencia de la IA).
+- Validación de que Redis se reemplaza por Valkey para cumplimiento estricto de la Ley 9986 (ajuste del equipo).
+- Validación de que la bitácora usa Event Sourcing (Kafka) y no un CRUD relacional (decisión del equipo).
+- Revisión de que los modelos de consistencia (fuerte/eventual) son correctos por BC.
+- Verificación de las licencias open source de cada tecnología.
+
+### Prompt 3 — Matriz comparativa de estrategias de persistencia (Tier 2: agrupamiento/comparación)
+
+> **Prompt dado:**
+> *"Construye una matriz comparativa de 20 criterios (derivados de las RNF-01 a RNF-06 del RFP, de las Leyes 8968, 7410, 8488, 8228, 9986 y de la normativa de la Contraloría, más atributos de calidad: acoplamiento, escalabilidad, evolución tecnológica, alineación con ADR-0002 y con el estilo Event-Driven Híbrido) que contraste las tres alternativas de persistencia: A) BD compartida monolítica, B) BD por servicio uniforme, C) Políglota distribuida. Usa símbolos ✓✓/✓/△/✗ para idoneidad. Incluye una columna de 'Hecho/justificación' con referencia APA por fila. Termina con una conclusión que justifique la opción C."*
+
+**Filtros críticos aplicados por el equipo:**
+- Verificación de que los 20 criterios cubren todo el espectro del RFP y leyes (no sólo atributos técnicos).
+- Revisión crítica de cada celda de la matriz: el equipo ajustó varias calificaciones (p. ej., el coste de infraestructura on-premise se calificó △ para C, no ✗, porque el trade-off se asume y mitiga).
+- Validación de que la conclusión se deriva de los hechos de la matriz, no de una afirmación gratuita.
+- Verificación de cada referencia APA.
+
+### Prompt 4 — Revisión de apuntes, gramática y formato APA (Tier 1: revisión/legibilidad)
+
+> **Prompt dado:**
+> *"Revisa el siguiente texto del SAD (Sección 4 Topología de Datos y Persistencia) en busca de errores de gramática, ortografía, coherencia de referencias en estilo APA 7ª edición, y legibilidad técnica. No cambies el contenido sustantivo ni las decisiones técnicas; sólo corrige formato, gramática y consistencia de citas. Indica los cambios sugeridos con un diff."*
+
+**Filtros críticos aplicados por el equipo:**
+- Verificación de que la IA no alteró el contenido sustantivo ni las decisiones técnicas (Tier 1 estricto).
+- Aceptación manual sólo de los cambios de formato/gramática; rechazo de cualquier modificación sustantiva.
+- Re-verificación de cada referencia APA contra la fuente original.
+
+### Prompt 5 — Generación del diagrama Mermaid de topología de datos (Tier 2: ilustración a partir de contenido del equipo)
+
+> **Prompt dado:**
+> *"Genera un diagrama Mermaid (flowchart TB) de la topología de datos de CivisGuard Analytics, con las siguientes capas: (1) Clientes (Web, Móvil Offline, Sistemas externos), (2) API Gateway + Keycloak, (3) Microservicios por Bounded Context (BC1 Incidentes … BC9 Archivos), (4) Bus EDA Apache Kafka como source of truth, (5) Capa de persistencia políglota (PostgreSQL para BC1/2/3/5/6/9, ClickHouse para BC4, Redis para BC2/5 cache, MinIO para BC9 objetos, SQLite para BC7 offline). Usa colores distintivos por tipo de nodo. Usa flechas sólidas para síncrono, flechas asíncronas para eventos Kafka, flechas CDC para Debezium/Kafka Connect. Incluye una leyenda con tipos de nodo y tipos de flujo, y una tabla de tecnologías con licencia open source."*
+
+**Filtros críticos aplicados por el equipo:**
+- Validación de que el diagrama refleja fielmente la topología decidida por el equipo (no una topología inventada por la IA).
+- Verificación de que los flujos síncrono/asíncrono/CDC están tipados correctamente.
+- Verificación de que la leyenda incluye tecnologías explícitas y licencias open source (cumplimiento Ley 9986).
+- Revisión manual de la coherencia entre el diagrama Mermaid y la sección arc42 #4 del SAD.
+- Generación complementaria del archivo `.drawio` editable por el equipo, para cumplimiento de la convención del Documento Base (draw.io como herramienta de edición C4).
+
+---
+
+## A.4 Resumen de clasificación por tier ético (Cheng et al., 2025)
+
+| # | Uso de IA | Tier ético (Cheng et al., 2025) | ¿Requiere supervisión humana crítica? |
+|:--:|---|:--:|:--:|
+| 1 | Formato de ADR-003 | Tier 1 (estructura/formato) | Sí — verificación de referencias |
+| 2 | Comparación de tecnologías por BC | Tier 2 (comparación entre marcos) | Sí — validación de elecciones técnicas |
+| 3 | Matriz comparativa 20 criterios | Tier 2 (agrupamiento/comparación) | Sí — revisión crítica de cada celda |
+| 4 | Revisión de apuntes, gramática, APA | Tier 1 (revisión/legibilidad) | Sí — rechazo de cambios sustantivos |
+| 5 | Diagrama Mermaid de topología | Tier 2 (ilustración a partir de contenido del equipo) | Sí — validación de fidelidad al diseño |
+
+**Conclusión de la clasificación:** ningún uso de IA se ubica en el **Tier 3** (éticamente sospechoso: redacción *de novo*, interpretación de datos, revisión de literatura). El equipo **no** usó la IA para interpretar datos, generar conclusiones sustantivas, ni redactar secciones completas sin contenido original en el *prompt*. La interpretación de datos y el análisis arquitectónico fueron realizados por el equipo humano, conforme a la pregunta *(1)* del *Author Checklist* de Cheng et al. (2025).
+
+---
+
+## A.5 Declaración final
+
+El equipo Cenfosoft declara que el uso de IA en este trabajo fue **asistencial, transparente y acotado a tareas de formato, comparación entre marcos, agrupamiento de datos y revisión de legibilidad**, siempre dentro de los *tiers* éticamente aceptables de Cheng et al. (2025), con verificación humana de cada salida y con preservación de la competencia y el juicio arquitectónico del equipo. La IA **no** generó ideas primarias, **no** interpretó datos, **no** tomó decisiones técnicas por sí sola y **no** sustituyó el análisis crítico de los autores. Todas las referencias citadas fueron verificadas contra fuentes reales para prevenir alucinaciones, conforme a la advertencia explícita de Cheng et al. (2025) y de Athaluri et al. (2023).
+
+---
+
+## A.6 Referencias (APA 7ª ed.)
+
+- Athaluri, S. A., Manthena, S. V., Kesapragada, V., Yarlagadda, V., Dave, T., & Duddumpudi, R. T. S. (2023). Exploring the boundaries of reality: Investigating the phenomenon of artificial intelligence hallucination in scientific writing through ChatGPT references. *Cureus*, *15*(4), e37432. https://doi.org/10.7759/cureus.37432
+- Bhattacharyya, M., Miller, V. M., Bhattacharyya, D., & Miller, L. E. (2023). High rates of fabricated and inaccurate references in ChatGPT-generated medical content. *Cureus*, *15*(5), e39238. https://doi.org/10.7759/cureus.39238
+- Cheng, A., Calhoun, A., & Reedy, G. (2025). Artificial intelligence-assisted academic writing: Recommendations for ethical use. *Advances in Simulation*, *10*(22). https://doi.org/10.1186/s41077-025-00350-6
+- Mann, S. P., Vazirani, A. A., Mateo, A., Earp, B. D., Minssen, T., Cohen, I. G., et al. (2024). Guidelines for ethical use and acknowledgement of large language models in academic writing. *Nature Machine Intelligence*, *6*, 1272–1274. https://doi.org/10.1038/s42256-024-00910-x
+- Evans, E. (2003). *Domain-Driven Design: Tackling Complexity in the Heart of Software*. Addison-Wesley.
+- Fowler, M. (2015, 25 de marzo). *Microservices: A definition of this new architectural term*. https://martinfowler.com/articles/microservices.html
+- Kleppmann, M. (2017). *Designing Data-Intensive Applications*. O'Reilly Media.
+- Newman, S. (2021). *Building Microservices* (2.ª ed.). O'Reilly Media.
+- Richardson, C. (2019). *Microservices Patterns*. Manning Publications.
+- Vernon, V. (2013). *Implementing Domain-Driven Design*. Addison-Wesley.
+- Asamblea Legislativa de Costa Rica. (2011). *Ley N.° 8968, Ley de Protección de la Persona frente al Tratamiento de sus Datos Personales*. La Gaceta N.° 103.
+- Asamblea Legislativa de Costa Rica. (2018). *Ley N.° 9986, Ley de la Contratación Pública*. La Gaceta N.° 97.
+
+\newpage
+
+## Fuente: src-sad/arc42-template-EN.md
+
+# 
+
+**About arc42**
+
+arc42, the template for documentation of software and system
+architecture.
+
+Template Version 9.0-EN. (based upon AsciiDoc version), July 2025
+
+Created, maintained and © by Dr. Peter Hruschka, Dr. Gernot Starke and
+contributors. See <https://arc42.org>.
+
+# Introduction and Goals
+
+## Requirements Overview
+
+## Quality Goals
+
+## Stakeholders
+
+| Role/Name    | Contact         | Expectations        |
+|--------------|-----------------|---------------------|
+| *\<Role-1\>* | *\<Contact-1\>* | *\<Expectation-1\>* |
+| *\<Role-2\>* | *\<Contact-2\>* | *\<Expectation-2\>* |
+
+# Architecture Constraints
+
+# Context and Scope
+
+## Business Context
+
+**\<Diagram or Table\>**
+
+**\<optionally: Explanation of external domain interfaces\>**
+
+## Technical Context
+
+**\<Diagram or Table\>**
+
+**\<optionally: Explanation of technical interfaces\>**
+
+**\<Mapping Input/Output to Channels\>**
+
+# Solution Strategy
+
+# Building Block View
+
+## Whitebox Overall System
+
+***\<Overview Diagram\>***
+
+Motivation  
+*\<text explanation\>*
+
+Contained Building Blocks  
+*\<Description of contained building block (black boxes)\>*
+
+Important Interfaces  
+*\<Description of important interfaces\>*
+
+### \<Name black box 1\>
+
+*\<Purpose/Responsibility\>*
+
+*\<Interface(s)\>*
+
+*\<(Optional) Quality/Performance Characteristics\>*
+
+*\<(Optional) Directory/File Location\>*
+
+*\<(Optional) Fulfilled Requirements\>*
+
+*\<(optional) Open Issues/Problems/Risks\>*
+
+### \<Name black box 2\>
+
+*\<black box template\>*
+
+### \<Name black box n\>
+
+*\<black box template\>*
+
+### \<Name interface 1\>
+
+…​
+
+### \<Name interface m\>
+
+## Level 2
+
+### White Box *\<building block 1\>*
+
+*\<white box template\>*
+
+### White Box *\<building block 2\>*
+
+*\<white box template\>*
+
+…​
+
+### White Box *\<building block m\>*
+
+*\<white box template\>*
+
+## Level 3
+
+### White Box \<\_building block x.1\_\>
+
+*\<white box template\>*
+
+### White Box \<\_building block x.2\_\>
+
+*\<white box template\>*
+
+### White Box \<\_building block y.1\_\>
+
+*\<white box template\>*
+
+# Runtime View
+
+## \<Runtime Scenario 1\>
+
+- *\<insert runtime diagram or textual description of the scenario\>*
+
+- *\<insert description of the notable aspects of the interactions
+  between the building block instances depicted in this diagram.\>*
+
+## \<Runtime Scenario 2\>
+
+## …​
+
+## \<Runtime Scenario n\>
+
+# Deployment View
+
+## Infrastructure Level 1
+
+***\<Overview Diagram\>***
+
+Motivation  
+*\<explanation in text form\>*
+
+Quality and/or Performance Features  
+*\<explanation in text form\>*
+
+Mapping of Building Blocks to Infrastructure  
+*\<description of the mapping\>*
+
+## Infrastructure Level 2
+
+### *\<Infrastructure Element 1\>*
+
+*\<diagram + explanation\>*
+
+### *\<Infrastructure Element 2\>*
+
+*\<diagram + explanation\>*
+
+…​
+
+### *\<Infrastructure Element n\>*
+
+*\<diagram + explanation\>*
+
+# Cross-cutting Concepts
+
+## *\<Concept 1\>*
+
+*\<explanation\>*
+
+## *\<Concept 2\>*
+
+*\<explanation\>*
+
+…​
+
+## *\<Concept n\>*
+
+*\<explanation\>*
+
+# Architecture Decisions
+
+# Quality Requirements
+
+## Quality Requirements Overview
+
+## Quality Scenarios
+
+# Risks and Technical Debts
+
+# Glossary
+
+| Term         | Definition         |
+|--------------|--------------------|
+| *\<Term-1\>* | *\<definition-1\>* |
+| *\<Term-2\>* | *\<definition-2\>* |
+
+\newpage
+
+# Inventario de diagramas y artefactos visuales
+
+- c4-models/SystemContext.drawio
+- c4-models/SystemContext.drawio.png
+- c4-models/SystemContextLevel2.drawio
+- c4-models/topologia-datos.drawio
