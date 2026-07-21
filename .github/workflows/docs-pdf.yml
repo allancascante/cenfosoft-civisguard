@@ -1,9 +1,10 @@
 name: Build docs PDF (arc42 consolidated)
 
 # Dispara cuando cambia algo en docs/ (excepto el PDF autogenerado),
-# el script de consolidación o el propio workflow.
-# El PDF generado se excluye del trigger con paths-ignore para evitar
-# que el commit automático vuelva a disparar el workflow (bucle infinito).
+# el script de consolidacion o el propio workflow.
+# El bucle infinito se previene con dos mecanismos:
+#   1. El job solo corre si el actor NO es el bot de GitHub Actions.
+#   2. El commit del bot incluye [skip ci] en el mensaje.
 on:
   push:
     branches: [main]
@@ -11,18 +12,12 @@ on:
       - "docs/**"
       - "scripts/build_docs_pdf.py"
       - ".github/workflows/docs-pdf.yml"
-    paths-ignore:
-      - "docs/consolidado-docs.pdf"
-      - "docs/consolidado.qmd"
   pull_request:
     branches: [main]
     paths:
       - "docs/**"
       - "scripts/build_docs_pdf.py"
       - ".github/workflows/docs-pdf.yml"
-    paths-ignore:
-      - "docs/consolidado-docs.pdf"
-      - "docs/consolidado.qmd"
   workflow_dispatch:
 
 permissions:
@@ -30,6 +25,7 @@ permissions:
 
 jobs:
   pdf:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
 
     steps:
