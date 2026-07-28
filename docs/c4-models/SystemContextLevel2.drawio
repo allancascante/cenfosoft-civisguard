@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" pages="2">
+<mxfile host="app.diagrams.net" pages="3">
   <diagram name="C4 Nivel 1" id="KlW0apmKtK7-6CqX298h">
     <mxGraphModel dx="2372" dy="-2199" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -192,7 +192,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="6ZnvrQZJkhZQ5EsFmywb" name="C4 Nivel 2">
-    <mxGraphModel dx="1398" dy="658" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1711" dy="989" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -249,7 +249,7 @@
             <mxGeometry height="120" width="200" x="870" y="160" as="geometry" />
           </mxCell>
         </object>
-        <object placeholders="1" c4Name="Servicio de Despacho" c4Type="Container" c4Technology="Java / Spring Boot" c4Description="Evalúa recursos y confirma despacho en menos de 90 segundos. Publica RecursosDespachados" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="cont-despacho">
+        <object placeholders="1" c4Name="Servicio de Despacho" c4Type="Container" c4Technology="Java / Spring Boot" c4Description="Evalúa recursos y confirma despacho en menos de 90 segundos. Publica RecursosDespachados" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" link="data:page/id,VrIlomkqLKqdHQOxHtzU" id="cont-despacho">
           <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#438DD5;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#3C7FC0;fontSize=10;" vertex="1">
             <mxGeometry height="120" width="200" x="870" y="380" as="geometry" />
           </mxCell>
@@ -612,6 +612,269 @@
             </mxGeometry>
           </mxCell>
         </object>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="VrIlomkqLKqdHQOxHtzU" name="C4 Nivel 3">
+    <mxGraphModel dx="1956" dy="1130" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="boundary" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#438DD5;dashed=1;dashPattern=8 4;fontColor=#438DD5;fontStyle=1;fontSize=13;verticalAlign=top;arcSize=3;" value="Servicio de Despacho [Container: Java / Spring Boot]" vertex="1">
+          <mxGeometry height="1130" width="1000" x="280" y="80" as="geometry" />
+        </mxCell>
+        <object placeholders="1" c4Name="API Gateway" c4Type="Container" c4Technology="Kong / Nginx" c4Description="Enruta solicitudes de despacho autenticadas" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="ext-gateway">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#438DD5;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#3C7FC0;fontSize=10;" vertex="1">
+            <mxGeometry height="100" width="180" x="50" y="300" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Bus de Eventos" c4Type="Container" c4Technology="Apache Kafka" c4Description="Recibe eventos publicados por el Servicio de Despacho" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="ext-kafka">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#E6821E;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#CF6F0F;fontSize=10;" vertex="1">
+            <mxGeometry height="100" width="180" x="1340" y="600" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Sistemas Institucionales" c4Type="Software System" c4Description="Fuerza Pública, Bomberos, Cruz Roja, CCSS. Fuente de disponibilidad de recursos" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="ext-instituciones">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#999999;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#8A8A8A;fontSize=10;" vertex="1">
+            <mxGeometry height="100" width="180" x="1340" y="330" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="BD Despacho" c4Type="Container" c4Technology="PostgreSQL" c4Description="Almacena estado de recursos, despachos activos y confirmaciones" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="ext-db">
+          <mxCell parent="1" style="shape=cylinder;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#438DD5;fontColor=#ffffff;strokeColor=#3C7FC0;fontSize=10;" vertex="1">
+            <mxGeometry height="110" width="180" x="1340" y="900" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Operador del 9-1-1 / Supervisor" c4Type="Person" c4Description="Recibe alerta de fallo y decide manualmente el despacho" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="ext-operador">
+          <mxCell parent="1" style="html=1;dashed=0;whitespace=wrap;fillColor=#08427b;strokeColor=none;fontColor=#ffffff;shape=mxgraph.c4.person;align=center;fontSize=10;" vertex="1">
+            <mxGeometry height="160" width="120" x="80" y="520" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="label-query" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontStyle=1;fontSize=11;fontColor=#0F6E56;" value="CQRS — Lado Query (Lectura)" vertex="1">
+          <mxGeometry height="30" width="280" x="300" y="100" as="geometry" />
+        </mxCell>
+        <object placeholders="1" c4Name="Availability Query Handler" c4Type="Component" c4Technology="Spring Service" c4Description="Recibe consultas de disponibilidad de recursos. Primero consulta la caché local; si no hay datos frescos, delega al Resource Availability Fetcher" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="comp-query-handler">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#85BBF0;fontColor=#000000;align=center;arcSize=10;strokeColor=#78A8D8;fontSize=10;" vertex="1">
+            <mxGeometry height="120" width="220" x="310" y="160" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Resource Availability Fetcher" c4Type="Component" c4Technology="Spring Service + Fallback" c4Description="Consulta disponibilidad a los sistemas institucionales externos. Si no responde en el tiempo límite, activa el Fallback Alert Publisher" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="comp-fetcher">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#85BBF0;fontColor=#000000;align=center;arcSize=10;strokeColor=#78A8D8;fontSize=10;" vertex="1">
+            <mxGeometry height="120" width="220" x="310" y="360" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Availability Cache" c4Type="Component" c4Technology="Redis" c4Description="Caché del último estado conocido de recursos por institución. TTL de 30 segundos para garantizar frescura de datos" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="comp-cache">
+          <mxCell parent="1" style="shape=cylinder;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#85BBF0;fontColor=#000000;strokeColor=#78A8D8;fontSize=10;" vertex="1">
+            <mxGeometry height="110" width="200" x="310" y="570" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Fallback Alert Publisher" c4Type="Component" c4Technology="Spring Service" c4Description="Cuando un sistema institucional no responde, genera una alerta hacia el operador o supervisor para que decida manualmente el despacho" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="comp-fallback">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#85BBF0;fontColor=#000000;align=center;arcSize=10;strokeColor=#78A8D8;fontSize=10;" vertex="1">
+            <mxGeometry height="120" width="220" x="310" y="780" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="label-command" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontStyle=1;fontSize=11;fontColor=#3C3489;" value="CQRS — Lado Command (Escritura)" vertex="1">
+          <mxGeometry height="30" width="300" x="700" y="100" as="geometry" />
+        </mxCell>
+        <object placeholders="1" c4Name="Dispatch Command Handler" c4Type="Component" c4Technology="Spring Service" c4Description="Recibe el comando de despacho validado desde el API Gateway. Inicia la Saga de coordinación interinstitucional" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="comp-command-handler">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#85BBF0;fontColor=#000000;align=center;arcSize=10;strokeColor=#78A8D8;fontSize=10;" vertex="1">
+            <mxGeometry height="120" width="220" x="720" y="160" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Dispatch Saga Orchestrator" c4Type="Component" c4Technology="Spring State Machine" c4Description="Coordinador central de la Saga. Gestiona el flujo: solicitar recursos → confirmar por institución → confirmar despacho global o compensar si alguna institución falla" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="comp-saga">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#85BBF0;fontColor=#000000;align=center;arcSize=10;strokeColor=#78A8D8;fontSize=10;" vertex="1">
+            <mxGeometry height="140" width="220" x="720" y="360" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Dispatch Confirmation Handler" c4Type="Component" c4Technology="Spring Service" c4Description="Recibe confirmaciones de cada institución. Cuando todas confirman dentro del límite de 90 segundos, publica el evento RecursosDespachados a Kafka" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="comp-confirmation">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#85BBF0;fontColor=#000000;align=center;arcSize=10;strokeColor=#78A8D8;fontSize=10;" vertex="1">
+            <mxGeometry height="120" width="220" x="720" y="590" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Compensation Handler" c4Type="Component" c4Technology="Spring Service" c4Description="Si la Saga falla (timeout o institución no confirma), ejecuta las acciones compensatorias: libera recursos reservados y notifica al operador" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="comp-compensation">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#85BBF0;fontColor=#000000;align=center;arcSize=10;strokeColor=#78A8D8;fontSize=10;" vertex="1">
+            <mxGeometry height="120" width="220" x="720" y="800" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Dispatch Repository" c4Type="Component" c4Technology="Spring Data JPA" c4Description="Persiste el estado del despacho y los recursos asignados en la BD Despacho. Única pieza que escribe en base de datos" label="&lt;b&gt;%c4Name%&lt;/b&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;%c4Description%&lt;/div&gt;" id="comp-repository">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#85BBF0;fontColor=#000000;align=center;arcSize=10;strokeColor=#78A8D8;fontSize=10;" vertex="1">
+            <mxGeometry height="120" width="220" x="720" y="1020" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="cqrs-divider" parent="1" style="line;strokeColor=#666666;dashed=1;dashPattern=4 4;fontColor=#666666;" value="" vertex="1">
+          <mxGeometry height="1280" x="650" y="130" as="geometry" />
+        </mxCell>
+        <object placeholders="1" c4Type="Relationship" c4Technology="REST GET" c4Description="Consulta disponibilidad" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-gateway-query">
+          <mxCell edge="1" parent="1" source="ext-gateway" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="comp-query-handler" vertex="1">
+            <mxGeometry relative="1" x="0.2857" as="geometry">
+              <mxPoint as="offset" />
+              <Array as="points">
+                <mxPoint x="200" y="210" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="REST POST" c4Description="Envía comando de despacho" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-gateway-command">
+          <mxCell edge="1" parent="1" source="ext-gateway" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="comp-command-handler" vertex="1">
+            <mxGeometry relative="1" x="0.4483" as="geometry">
+              <mxPoint as="offset" />
+              <Array as="points">
+                <mxPoint x="140" y="140" />
+                <mxPoint x="830" y="140" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="Redis GET" c4Description="Consulta estado cacheado" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-query-cache">
+          <mxCell edge="1" parent="1" source="comp-query-handler" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="comp-cache" vertex="1">
+            <mxGeometry relative="1" x="0.5281" as="geometry">
+              <mxPoint as="offset" />
+              <Array as="points">
+                <mxPoint x="290" y="250" />
+                <mxPoint x="290" y="625" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="Interno" c4Description="Cache miss → consulta externa" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-query-fetcher">
+          <mxCell edge="1" parent="1" source="comp-query-handler" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="comp-fetcher" vertex="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="API REST" c4Description="Consulta disponibilidad de recursos" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-fetcher-instituciones">
+          <mxCell edge="1" parent="1" source="comp-fetcher" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#8A8A8A;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="ext-instituciones" vertex="1">
+            <mxGeometry relative="1" x="0.6136" as="geometry">
+              <mxPoint as="offset" />
+              <Array as="points">
+                <mxPoint x="480" y="340" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="Redis SET" c4Description="Actualiza caché con respuesta fresca" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-fetcher-cache">
+          <mxCell edge="1" parent="1" source="comp-fetcher" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="comp-cache" vertex="1">
+            <mxGeometry relative="1" x="-0.1111" as="geometry">
+              <mxPoint as="offset" />
+              <Array as="points">
+                <mxPoint x="450" y="530" />
+                <mxPoint x="450" y="530" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="Interno" c4Description="Timeout → activa fallback manual" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-fetcher-fallback">
+          <mxCell edge="1" parent="1" source="comp-fetcher" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D85A30;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="comp-fallback" vertex="1">
+            <mxGeometry relative="1" x="0.4583" as="geometry">
+              <mxPoint as="offset" />
+              <Array as="points">
+                <mxPoint x="560" y="420" />
+                <mxPoint x="560" y="840" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="Notificación push / Web App" c4Description="Alerta para decisión manual" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-fallback-operador">
+          <mxCell edge="1" parent="1" source="comp-fallback" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D85A30;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="ext-operador" vertex="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="Interno" c4Description="Inicia Saga de despacho" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-command-saga">
+          <mxCell edge="1" parent="1" source="comp-command-handler" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="comp-saga" vertex="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="API REST" c4Description="Solicita reserva de recursos" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-saga-instituciones">
+          <mxCell edge="1" parent="1" source="comp-saga" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#8A8A8A;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="ext-instituciones" vertex="1">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1140" y="430" />
+                <mxPoint x="1140" y="410" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="Interno" c4Description="Todas las instituciones confirmaron" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-saga-confirmation">
+          <mxCell edge="1" parent="1" source="comp-saga" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#639922;strokeWidth=2;fontColor=#707070;dashed=0;fontSize=9;" target="comp-confirmation" vertex="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="Interno" c4Description="Timeout o fallo → compensa" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-saga-compensation">
+          <mxCell edge="1" parent="1" source="comp-saga" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D85A30;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="comp-compensation" vertex="1">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="640" y="460" />
+                <mxPoint x="640" y="860" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="Kafka Producer" c4Description="Publica RecursosDespachados" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-confirmation-kafka">
+          <mxCell edge="1" parent="1" source="comp-confirmation" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#E6821E;strokeWidth=2;fontColor=#707070;dashed=0;fontSize=9;" target="ext-kafka" vertex="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="JPA" c4Description="Persiste despacho confirmado" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-confirmation-repo">
+          <mxCell edge="1" parent="1" source="comp-confirmation" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="comp-repository" vertex="1">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1060" y="680" />
+                <mxPoint x="1060" y="1050" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="JPA" c4Description="Persiste estado compensado" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-compensation-repo">
+          <mxCell edge="1" parent="1" source="comp-compensation" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="comp-repository" vertex="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Type="Relationship" c4Technology="SQL" c4Description="Lee y escribe" label="&lt;b&gt;%c4Description%&lt;/b&gt;&lt;div&gt;[%c4Technology%]&lt;/div&gt;" id="rel-repo-db">
+          <mxCell edge="1" parent="1" source="comp-repository" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=9;" target="ext-db" vertex="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="legend-box" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666666;dashed=1;dashPattern=1 2;" value="" vertex="1">
+          <mxGeometry height="200" width="900" x="280" y="1260" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontStyle=1;fontColor=#666666;fontSize=11;" value="Leyenda" vertex="1">
+          <mxGeometry height="20" width="80" x="295" y="1270" as="geometry" />
+        </mxCell>
+        <object placeholders="1" c4Name="Componente" c4Type="Component" c4Technology="Tecnología" c4Description="" label="&lt;b style=&#39;font-size:8px&#39;&gt;%c4Name%&lt;/b&gt;&lt;div style=&#39;font-size:8px&#39;&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;" id="legend-component">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#85BBF0;fontColor=#000000;arcSize=10;strokeColor=#78A8D8;fontSize=8;" vertex="1">
+            <mxGeometry height="50" width="140" x="295" y="1300" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="legend-rel-normal" edge="1" parent="1" style="edgeStyle=none;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=8;" value="&lt;b style=&#39;font-size:8px&#39;&gt;Flujo normal&lt;/b&gt;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="460" y="1320" as="sourcePoint" />
+            <mxPoint x="580" y="1320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend-rel-kafka" edge="1" parent="1" style="edgeStyle=none;html=1;strokeColor=#E6821E;strokeWidth=2;fontColor=#707070;dashed=0;fontSize=8;" value="&lt;b style=&#39;font-size:8px&#39;&gt;Evento Kafka&lt;/b&gt;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="460" y="1350" as="sourcePoint" />
+            <mxPoint x="580" y="1350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend-rel-success" edge="1" parent="1" style="edgeStyle=none;html=1;strokeColor=#639922;strokeWidth=2;fontColor=#707070;dashed=0;fontSize=8;" value="&lt;b style=&#39;font-size:8px&#39;&gt;Confirmación exitosa&lt;/b&gt;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="600" y="1320" as="sourcePoint" />
+            <mxPoint x="750" y="1320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend-rel-fallback" edge="1" parent="1" style="edgeStyle=none;html=1;strokeColor=#D85A30;strokeWidth=2;fontColor=#707070;dashed=1;fontSize=8;" value="&lt;b style=&#39;font-size:8px&#39;&gt;Fallback / Compensación&lt;/b&gt;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="600" y="1350" as="sourcePoint" />
+            <mxPoint x="750" y="1350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend-cqrs-q" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontStyle=1;fontSize=9;fontColor=#0F6E56;" value="Lado Query (lectura)" vertex="1">
+          <mxGeometry height="20" width="160" x="780" y="1300" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-cqrs-c" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontStyle=1;fontSize=9;fontColor=#3C3489;" value="Lado Command (escritura)" vertex="1">
+          <mxGeometry height="20" width="180" x="780" y="1330" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-divider-label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#666666;" value="── Separador CQRS" vertex="1">
+          <mxGeometry height="20" width="160" x="780" y="1360" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
