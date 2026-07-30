@@ -1052,7 +1052,8 @@ Mapping of Building Blocks to Infrastructure
 
 # Inventario de diagramas y artefactos visuales
 
+- c4-models/SystemContext-C4 Nivel 1.drawio.png
+- c4-models/SystemContext-C4 Nivel 2.drawio.png
+- c4-models/SystemContext-C4 Nivel 3.drawio.png
 - c4-models/SystemContext.drawio
-- c4-models/SystemContext.drawio.png
-- c4-models/SystemContextLevel2.drawio
 - c4-models/topologia-datos.drawio
