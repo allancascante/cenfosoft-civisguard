@@ -637,6 +637,209 @@ Cada microservicio posee su propia base de datos, pero **todas** utilizan el mis
 
 \newpage
 
+## Fuente: adrs/0004-control-de-acceso-basado-en-roles-por-institucion.md
+
+# ADR-0004: Control de Acceso Basado en Roles por Institución (RBAC Institucional)
+
+**Date:** 2026-07-27
+**Status:** 2026-07-27 proposed
+**Decisionmakers:** Firma Consultora Cenfosoft (G. Castro, D. Cárdenas, A. Cascante, R. Villareal)
+**Supersedes:** —
+**Relates to:** ADR-001 (Entorno Operativo On-Premise), ADR-0002 (Arquitectura Orientada al Análisis de Datos), ADR-0003 (Persistencia Políglota Distribuida)
+**RFP de referencia:** MGPSP-DGTIC-RFP-2026-007 (CivisGuard Analytics)
+
+---
+
+## Contexto
+
+**CivisGuard Analytics** integra seis instituciones del Estado costarricense —Sistema 9-1-1, Fuerza Pública, CCSS, Cruz Roja, Bomberos y CNE— cada una con operadores propios que deben poder reportar y consultar incidentes dentro de su ámbito institucional **sin acceder a los incidentes de otras instituciones**.
+
+El RFP MGPSP-DGTIC-RFP-2026-007 y el marco legal vigente imponen restricciones que condicionan directamente el modelo de seguridad:
+
+| Restricción | Implicación sobre control de acceso |
+|---|---|
+| **RNF-03** Visibilidad diferenciada por institución y perfil | Un operador de Bomberos no puede ver incidentes de Fuerza Pública ni viceversa. |
+| **Ley 8968** — principio de finalidad y proporcionalidad | Los datos personales de un incidente solo pueden ser procesados por quien tiene competencia legal sobre ese incidente. |
+| **Ley 8228** — Ley General de Policía | La información operativa de la Fuerza Pública es de acceso restringido a personal autorizado. |
+| **ADR-0003** — Aislamiento institucional con RLS | El almacén ya prevé Row-Level Security por `institucion_id`; el modelo de autenticación/autorización debe alimentar ese filtro de forma confiable. |
+
+La arquitectura event-driven definida en el SAD establece microservicios independientes por dominio; sin un modelo de autorización centralizado y portable entre servicios, cada microservicio debería reimplementar su propia lógica de seguridad, generando fragmentación e inconsistencias.
+
+---
+
+## Decision
+
+Se adopta un modelo de **Control de Acceso Basado en Roles (RBAC)** con **alcance institucional obligatorio**, bajo las siguientes reglas:
+
+1. **Identidad federada con claim de institución.** Cada usuario autenticado recibe un *JSON Web Token* (JWT) firmado que incluye obligatoriamente los claims `institucion_id` y `rol`. El servicio de autenticación (Identity Provider) es la única fuente de verdad sobre la identidad.
+
+2. **Roles por institución.** Los roles se definen en el contexto de una institución; no existen roles globales salvo los del CNE (ver ADR-0005). Los roles base son:
+
+   | Rol | Capacidades |
+   |---|---|
+   | `operador_institucional` | Reportar incidentes y consultar incidentes **de su propia institución**. |
+   | `supervisor_institucional` | Todo lo anterior + visualizar estadísticas agregadas de su institución. |
+   | `coordinador_cne` | Ver incidentes de **todas** las instituciones en modo lectura + emitir solicitudes de apoyo (ver ADR-0005). |
+   | `admin_plataforma` | Gestión de usuarios y configuración; sin acceso a datos operativos de incidentes. |
+
+3. **Enforcement en el gateway y en la capa de datos.** La autorización se aplica en dos capas:
+   - **API Gateway:** valida el JWT y rechaza tokens inválidos o expirados antes de que la solicitud llegue a cualquier microservicio.
+   - **Microservicio / base de datos:** aplica **Row-Level Security (RLS)** usando el `institucion_id` extraído del JWT, alineado con ADR-0003, de modo que incluso una brecha en el gateway no expone datos de otras instituciones.
+
+4. **Principio de mínimo privilegio.** Un usuario solo puede acceder a las operaciones y datos estrictamente necesarios para su rol. El reporte de un incidente solo incluye los datos del ámbito de la institución que lo origina.
+
+5. **Auditoría de accesos.** Todo intento de acceso —exitoso o rechazado— se registra en la bitácora inmutable definida en ADR-0003, incluyendo `usuario_id`, `institucion_id`, `recurso`, `operacion` y `timestamp`. Retención mínima de 5 años conforme a la normativa de la Contraloría.
+
+6. **Tecnología open source.** El Identity Provider debe ser *open source* (p. ej. Keycloak) para cumplir la restricción de independencia tecnológica de la **Ley 9986**.
+
+---
+
+## Alternativas consideradas
+
+### Alternativa A — Control de acceso ad-hoc por microservicio
+
+Cada microservicio implementa su propia lógica de autorización sin un modelo centralizado.
+
+**Razones del descarte:**
+- Duplicación de lógica de seguridad en cada servicio; alta probabilidad de inconsistencias entre implementaciones.
+- Imposible auditar de forma centralizada (viola RNF-03 y Ley 8968).
+- El RLS de ADR-0003 no tiene un claim confiable y portable de donde extraer `institucion_id`.
+
+### Alternativa B — ACL (Access Control List) por recurso
+
+Listas de control de acceso por cada incidente o recurso individual.
+
+**Razones del descarte:**
+- No escala para el volumen de incidentes del sistema (250 incidentes/min, RNF-02); gestionar ACL individuales es operacionalmente inviable.
+- No responde al modelo mental del dominio, donde el acceso se determina por la pertenencia institucional, no por el recurso individual.
+
+### Alternativa C — RBAC con alcance institucional (ELEGIDA)
+
+Roles definidos por institución, JWT con claims verificables, enforcement en dos capas (gateway + RLS), auditoría centralizada, Identity Provider open source. Satisface simultáneamente RNF-03, Ley 8968, Ley 8228, ADR-0003 y el principio de mínimo privilegio.
+
+---
+
+## Consequences
+
+**Positivas:**
+- Separación clara entre autenticación (quién eres) y autorización (qué puedes hacer y sobre qué institución).
+- El RLS de ADR-0003 opera con un `institucion_id` confiable proveniente del JWT, sin lógica adicional en cada microservicio.
+- Auditoría centralizada y verificable para efectos legales y de Contraloría.
+- Modelo extensible: agregar una nueva institución implica crear sus usuarios y asignarles el rol correspondiente, sin cambios de código.
+
+**Negativas / riesgos:**
+- El Identity Provider se convierte en un componente crítico; requiere alta disponibilidad y estrategia de *failover* alineada con RNF-01.
+- La gestión de roles y permisos debe operarse con disciplina; una asignación incorrecta de `coordinador_cne` a un usuario no autorizado comprometería la visibilidad interinstitucional.
+
+\newpage
+
+## Fuente: adrs/0005-protocolo-de-solicitud-de-apoyo-interinstitucional-cne.md
+
+# ADR-0005: Protocolo de Solicitud de Apoyo Interinstitucional del CNE
+
+**Date:** 2026-07-27
+**Status:** 2026-07-27 proposed
+**Decisionmakers:** Firma Consultora Cenfosoft (G. Castro, D. Cárdenas, A. Cascante, R. Villareal)
+**Supersedes:** —
+**Relates to:** ADR-001 (Entorno Operativo On-Premise), ADR-0002 (Arquitectura Orientada al Análisis de Datos), ADR-0003 (Persistencia Políglota Distribuida), ADR-0004 (Control de Acceso Basado en Roles por Institución)
+**RFP de referencia:** MGPSP-DGTIC-RFP-2026-007 (CivisGuard Analytics)
+
+---
+
+## Contexto
+
+La **Comisión Nacional de Prevención de Riesgos y Atención de Emergencias (CNE)** es el ente rector nacional de la gestión de emergencias en Costa Rica (Ley 8488). Durante un evento de emergencia declarado, el CNE tiene la facultad legal de solicitar la movilización de recursos a las demás instituciones del Estado —Fuerza Pública, Bomberos, Cruz Roja, CCSS y Sistema 9-1-1— hacia un **área geográfica específica** definida por la naturaleza del evento.
+
+Esta solicitud de apoyo no es un incidente convencional: es un acto de coordinación interinstitucional que debe:
+
+- Originarse **exclusivamente** desde el rol `coordinador_cne` (ADR-0004).
+- Especificar un **área geográfica** (polígono o radio de impacto) y el tipo de apoyo requerido.
+- Propagarse de forma **confiable y auditable** a los sistemas de coordinación internos de cada institución destinataria.
+- Garantizar que cada institución reciba la solicitud **exactamente una vez**, incluso ante fallos de conectividad parciales (RNF-05, ADR-001 on-premise).
+- Quedar registrada de forma **inmutable** en la bitácora del sistema (RNF-04, ADR-0003).
+
+El acoplamiento directo del CNE con los sistemas internos de cada institución crearía dependencias frágiles, incompatibles con la autonomía institucional establecida en ADR-0003 y con el estilo arquitectónico event-driven del SAD.
+
+---
+
+## Decision
+
+Se adopta un **Protocolo de Solicitud de Apoyo Interinstitucional** basado en **publicación de eventos en el bus EDA (Apache Kafka)** con las siguientes reglas:
+
+1. **Evento de dominio `SolicitudDeApoyoEmitida`.** Cuando el `coordinador_cne` emite una solicitud de apoyo, el microservicio de Coordinación CNE publica en Kafka un evento `SolicitudDeApoyoEmitida` con el siguiente esquema mínimo:
+
+   ```json
+   {
+     "solicitud_id": "uuid",
+     "emitida_por": "usuario_id (coordinador_cne)",
+     "institucion_origen": "CNE",
+     "instituciones_destino": ["BOMBEROS", "FUERZA_PUBLICA", "CRUZ_ROJA"],
+     "area_geografica": { "tipo": "polígono", "coordenadas": ["..."] },
+     "tipo_apoyo": "evacuacion|rescate|atencion_medica|...",
+     "nivel_urgencia": "inmediata|alta|media",
+     "timestamp": "ISO-8601",
+     "incidente_asociado_id": "uuid (opcional)"
+   }
+   ```
+
+2. **Topics particionados por institución destino.** El evento se publica en un topic Kafka particionado por `institucion_destino`, de modo que el Adaptador de Integración de cada institución consuma únicamente las solicitudes dirigidas a ella, sin acoplamiento entre instituciones.
+
+3. **Adaptadores de integración por institución.** Cada institución cuenta con un microservicio **Adaptador de Integración** que:
+   - Suscribe al topic de su partición.
+   - Transforma el evento `SolicitudDeApoyoEmitida` al formato propietario del sistema de coordinación interno de la institución (si aplica).
+   - Confirma la recepción mediante un evento de respuesta `SolicitudDeApoyoAcusada`.
+   - Garantiza procesamiento **idempotente** (at-least-once delivery de Kafka + deduplicación por `solicitud_id`).
+
+4. **Trazabilidad completa.** Cada evento —emisión, acuse, ejecución parcial, cierre— se registra en la bitácora inmutable (ADR-0003, Event Sourcing), con `solicitud_id` como correlador, permitiendo reconstruir el ciclo completo de la solicitud de apoyo en cualquier momento.
+
+5. **Autorización delegada al ADR-0004.** Solo los usuarios con rol `coordinador_cne` pueden invocar la operación de emisión. El API Gateway valida el JWT antes de que la solicitud llegue al microservicio de Coordinación CNE.
+
+6. **Operación offline-resiliente.** Si la conectividad de una institución destino está degradada (ADR-001, RNF-05), Kafka retiene el mensaje en el topic hasta que el Adaptador de esa institución reconecte y lo consuma, sin pérdida ni duplicación.
+
+---
+
+## Alternativas consideradas
+
+### Alternativa A — Llamada directa REST del CNE a cada sistema institucional
+
+El microservicio del CNE llama sincrónicamente la API de cada institución al emitir una solicitud.
+
+**Razones del descarte:**
+- **Acoplamiento temporal:** si el sistema de una institución está caído, la solicitud de apoyo falla para todas (efecto en cascada). Incompatible con RNF-01 y RNF-05.
+- **Conocimiento implícito de los sistemas internos de cada institución:** viola la autonomía institucional de ADR-0003.
+- **Sin garantía de entrega:** ante una caída parcial no hay mecanismo de reintento confiable sin lógica adicional compleja.
+- **Escalabilidad lineal:** agregar una nueva institución requiere modificar el microservicio del CNE.
+
+### Alternativa B — Notificación vía base de datos compartida (*Shared Database*)
+
+El CNE escribe la solicitud en una tabla central y cada institución la lee desde su propio proceso.
+
+**Razones del descarte:**
+- Anti-patrón *Shared Database* explícitamente descartado en ADR-0003.
+- Introduce acoplamiento estructural entre instituciones.
+- No provee semántica de entrega garantizada ni particionamiento por institución.
+
+### Alternativa C — Publicación de eventos en bus EDA por partición institucional (ELEGIDA)
+
+Evento `SolicitudDeApoyoEmitida` en Kafka, topics particionados por institución destino, Adaptadores de Integración idempotentes, trazabilidad en Event Store. Satisface simultáneamente RNF-01, RNF-03, RNF-04, RNF-05, ADR-0003 y ADR-0004, y mantiene la autonomía institucional.
+
+---
+
+## Consequences
+
+**Positivas:**
+- El CNE está **desacoplado** de los sistemas internos de cada institución; agregar una nueva institución solo requiere desplegar un nuevo Adaptador de Integración sin modificar el microservicio del CNE.
+- La solicitud de apoyo llega **exactamente a quien corresponde** gracias al particionamiento por `institucion_destino`, sin que instituciones no destinatarias puedan leerla (refuerza ADR-0004).
+- Resiliencia ante conectividad degradada garantizada por la retención de mensajes en Kafka.
+- Trazabilidad completa y auditable del ciclo de vida de cada solicitud de apoyo.
+
+**Negativas / riesgos:**
+- La consistencia del estado de la solicitud es **eventual**: el CNE no recibe una confirmación síncrona de que todas las instituciones ejecutaron la movilización. Se requiere un mecanismo de seguimiento de estado (saga de larga duración o *process manager*).
+- Los Adaptadores de Integración deben implementarse y mantenerse por institución; si el sistema interno de una institución cambia su API, el adaptador debe actualizarse.
+- La idempotencia en los adaptadores debe probarse rigurosamente para evitar duplicación de solicitudes ante reinicios del consumidor Kafka.
+
+\newpage
+
 ## Fuente: adrs/001-entorno-operativo.md
 
 # 1. Entorno Operativo
