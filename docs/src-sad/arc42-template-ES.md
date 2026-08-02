@@ -64,6 +64,24 @@ La mayor parte del volumen del sistema — ingesta de incidentes, actualización
 
 Los componentes con lógica de negocio real — despacho de recursos, protocolos de emergencia del CNE y sincronización offline de unidades de campo — se implementan como microservicios independientes. Cada uno tiene su propio ciclo de despliegue y base de datos, y se comunica con el resto del sistema a través del mismo bus de eventos. La capa de reportes y visualización institucional también son microservicios livianos que leen del datawarehouse.
 
+## Gobierno y segregación de datos por `institucion_id`
+
+`institucion_id` se establece como atributo canónico de dominio para garantizar aislamiento institucional, trazabilidad y cumplimiento normativo en toda la arquitectura de datos.
+
+**Reglas obligatorias de datos:**
+
+1. Todo registro de incidente, bitácora y proyección analítica debe persistir `institucion_id`.
+2. Todo evento en Kafka debe incluir `institucion_id` en su payload y/o headers, además de `event_id`, `correlation_id` y `causation_id`.
+3. Los almacenes multiinstitucionales deben aplicar **RLS (Row-Level Security)** o particionamiento equivalente por `institucion_id`.
+4. Las consultas operativas y analíticas deben filtrar explícitamente por `institucion_id`, salvo vistas nacionales autorizadas para rol `coordinador_cne`.
+5. `institucion_id` forma parte del contrato de datos entre microservicios; no es opcional ni derivable por conveniencia.
+
+**Resultado esperado:**
+
+- Separación efectiva de datos por institución (RNF-03).
+- Coherencia entre identidad (JWT), autorización (RBAC) y persistencia (ADR-0003 y ADR-0004).
+- Trazabilidad de extremo a extremo en flujos de coordinación interinstitucional (ADR-0005).
+
 ## Kubernetes como plataforma de orquestación
 
 Ambos segmentos se despliegan sobre un clúster de **Kubernetes**, que provee:
