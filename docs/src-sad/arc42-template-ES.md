@@ -196,19 +196,33 @@ Mapeo de los Bloques de Construcción a Infraestructura
 
 # Conceptos Transversales (Cross-cutting)
 
-## *\<Concepto 1\>*
+## Seguridad e Identidad Federada con JWT
 
-*\<explicación\>*
+La seguridad es un concepto transversal obligatorio en toda la solución. Todos los microservicios deben validar identidad y autorización antes de procesar cualquier operación, tanto en APIs síncronas como en flujos asíncronos por eventos.
 
-## *\<Concepto 2\>*
+**Reglas de arquitectura:**
 
-*\<explicación\>*
+1. Todo request HTTP debe incluir un JWT válido (firma, vigencia, emisor, audiencia).
+2. El `API Gateway` valida el JWT como primer control, y cada microservicio vuelve a validar como defensa en profundidad (*zero trust interno*).
+3. Todo evento publicado en Kafka debe transportar contexto de identidad (JWT o token de delegación equivalente) en headers del mensaje.
+4. Todo consumidor Kafka debe validar ese token antes de procesar el evento.
+5. Los claims mínimos obligatorios son: `sub` (usuario/servicio emisor), `rol`, `institucion_id`, `iat`, `exp`, `iss`, `aud`.
+6. Cada evento debe preservar correlación entre identidad y operación (`event_id`, `correlation_id`, `causation_id`) para trazabilidad y auditoría.
 
-...​
+**Aplicación sobre el dominio:**
 
-## *\<Concepto n\>*
+- La autorización RBAC institucional se deriva de `rol` + `institucion_id` (ver ADR-0004).
+- En solicitudes de apoyo del CNE, la identidad del emisor del evento debe mantenerse verificable de extremo a extremo (ver ADR-0005).
 
-*\<explicación\>*
+**Implicaciones operativas y de cumplimiento:**
+
+- Rechazo automático de tokens expirados, inválidos o sin claims obligatorios.
+- Registro auditable de validaciones y rechazos en bitácora inmutable.
+- Cumplimiento de segregación institucional y principio de mínimo privilegio.
+
+## *\<Otros conceptos transversales\>*
+
+*\<Agregar aquí otros conceptos globales: observabilidad, resiliencia, versionado de eventos, etc.\>*
 
 # Decisiones de Diseño
 
