@@ -597,65 +597,33 @@ Indicadores mínimos:
 
 # Conceptos Transversales (Cross-cutting)
 
-## Identidad, autenticación y autorización
+## Seguridad e Identidad Federada con JWT
 
-Keycloak centraliza identidades e integra LDAP/MFA. La autorización combina:
+La seguridad es un concepto transversal obligatorio en toda la solución. Todos los microservicios deben validar identidad y autorización antes de procesar cualquier operación, tanto en APIs síncronas como en flujos asíncronos por eventos.
 
-- RBAC por rol;
-- ABAC por institución, jurisdicción, sensibilidad, finalidad y participación;
-- RLS o particionamiento por `institucion_id`;
-- validación en backend;
-- auditoría de accesos sensibles y denegados.
+**Reglas de arquitectura:**
 
-## Propiedad y clasificación de datos
+1. Todo request HTTP debe incluir un JWT válido (firma, vigencia, emisor, audiencia).
+2. El `API Gateway` valida el JWT como primer control, y cada microservicio vuelve a validar como defensa en profundidad (*zero trust interno*).
+3. Todo evento publicado en Kafka debe transportar contexto de identidad (JWT o token de delegación equivalente) en headers del mensaje.
+4. Todo consumidor Kafka debe validar ese token antes de procesar el evento.
+5. Los claims mínimos obligatorios son: `sub` (usuario/servicio emisor), `rol`, `institucion_id`, `iat`, `exp`, `iss`, `aud`.
+6. Cada evento debe preservar correlación entre identidad y operación (`event_id`, `correlation_id`, `causation_id`) para trazabilidad y auditoría.
 
-Cada bounded context es propietario exclusivo de sus datos. Los servicios no leen directamente las tablas de otros servicios. Se minimiza la información incluida en eventos y bitácoras, y se evitan copias innecesarias de datos personales o información táctica.
+**Aplicación sobre el dominio:**
 
-## Contratos y evolución
+- La autorización RBAC institucional se deriva de `rol` + `institucion_id` (ver ADR-0004).
+- En solicitudes de apoyo del CNE, la identidad del emisor del evento debe mantenerse verificable de extremo a extremo (ver ADR-0005).
 
-Los contratos REST, gRPC y Kafka se versionan. Los eventos deben mantener compatibilidad hacia atrás mediante campos opcionales, valores por defecto y procesos de deprecación.
+**Implicaciones operativas y de cumplimiento:**
 
-## Consistencia, Saga e idempotencia
+- Rechazo automático de tokens expirados, inválidos o sin claims obligatorios.
+- Registro auditable de validaciones y rechazos en bitácora inmutable.
+- Cumplimiento de segregación institucional y principio de mínimo privilegio.
 
-La consistencia fuerte se limita al agregado y su base propietaria. Las operaciones entre servicios utilizan:
+## *\<Otros conceptos transversales\>*
 
-- Saga orquestada para despacho;
-- eventos para propagación;
-- Transactional Outbox;
-- claves de idempotencia;
-- control de eventos procesados;
-- restricciones de unicidad;
-- acciones compensatorias.
-
-## Auditoría e integridad
-
-La bitácora es append-only e incluye identidad, institución, acción, justificación, marca UTC, correlación, versión y hash de integridad. Se utilizarán encadenamiento de hashes, firma periódica y almacenamiento WORM.
-
-La bitácora conserva metadatos de auditoría y referencias a información sensible. No se duplicará indiscriminadamente información personal del incidente ni información táctica dentro del registro inmutable.
-
-## Resiliencia y manejo de fallos
-
-Los servicios utilizan timeouts, reintentos con backoff, circuit breakers, bulkheads y fallback manual cuando la automatización no puede continuar de forma segura. Los reintentos nunca deben crear un segundo efecto de negocio.
-
-## Operación offline
-
-Las operaciones locales son durables, identificables y sincronizables. Las transiciones críticas se validan contra la versión del agregado. Los conflictos no resolubles se presentan a un supervisor.
-
-## Tiempo, orden e identificadores
-
-- UTC para marcas de auditoría.
-- Relojes monotónicos para medir duraciones y timeouts.
-- Identificadores globales para incidentes y eventos.
-- Partición por `incidentId` para preservar orden dentro de un caso.
-- No se utiliza el reloj del dispositivo como única autoridad para decisiones críticas.
-
-## Observabilidad
-
-Métricas, logs y trazas se correlacionan de extremo a extremo. Las alertas se basan en SLO, retraso de consumidores, fallos de dependencias y pérdida de capacidad.
-
-## Configuración y secretos
-
-Los secretos no se almacenan en repositorios ni imágenes. Se administran mediante mecanismos institucionales compatibles con Kubernetes. Las configuraciones por institución se versionan y auditan.
+*\<Agregar aquí otros conceptos globales: observabilidad, resiliencia, versionado de eventos, etc.\>*
 
 # Decisiones de Diseño
 
