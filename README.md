@@ -50,12 +50,41 @@ El desarrollo arquitectónico se gestiona de manera incremental a través de las
 
 ## Estructura del Repositorio
 ```text
+├── .github/
+│   └── workflows/
+│       └── docs-pdf.yml    # Workflow: genera PDF automáticamente en cada cambio de docs/
 ├── docs/
 │   ├── adrs/               # Registros de Decisión Arquitectónica (ADRs)
 │   ├── c4-models/          # Diagramas del Modelo C4 (Contexto, Contenedores, Componentes)
-│   └── src-sad/            # Archivos fuente del Documento de Arquitectura (SAD)
+│   ├── src-sad/            # Archivos fuente del Documento de Arquitectura (SAD)
+│   ├── consolidado.qmd     # Fuente consolidada generada automáticamente
+│   └── consolidado-docs.pdf# PDF consolidado generado automáticamente
+├── scripts/
+│   └── build_docs_pdf.py   # Script para consolidar docs/ en un archivo Quarto
 └── README.md               # Presentación del proyecto
 ```
+
+## Generación del PDF consolidado
+
+El repositorio genera automáticamente un PDF con toda la documentación de `docs/`
+mediante **Quarto**. El proceso se ejecuta en GitHub Actions en cada cambio de `docs/`
+y el PDF resultante se commitea automáticamente a `main`.
+
+> ⚠️ **Quarto no se instala con npm.** Es un binario independiente.
+> Instalación oficial: <https://quarto.org/docs/get-started/>
+
+### Ejecución local
+
+```bash
+# 1. Generar el archivo fuente consolidado
+python3 scripts/build_docs_pdf.py
+
+# 2. Renderizar el PDF
+cd docs && quarto render consolidado.qmd --to pdf
+```
+
+Resultado: `docs/consolidado.pdf`
+
 
 ## Disclaimer
 El presente repositorio se creó exclusivamente con fines académicos en el marco de un curso de maestría universitaria. No tiene la intención de servir como referencia técnica oficial ni material para un proyecto en entorno de producción real. Toda la información, escenarios, datos transaccionales y simulaciones aquí presentadas son ficticias y de autoría exclusiva de los estudiantes que integran este equipo consultor.
