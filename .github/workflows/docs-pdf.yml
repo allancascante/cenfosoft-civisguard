@@ -40,10 +40,13 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Setup Quarto + TinyTeX
+      - name: Install TeX Live (Linux)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-lang-spanish
+
+      - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
-        with:
-          tinytex: true
 
       - name: Build consolidated QMD
         run: python scripts/build_docs_pdf.py
