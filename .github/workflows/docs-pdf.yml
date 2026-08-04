@@ -43,7 +43,14 @@ jobs:
       - name: Install TeX Live (Linux)
         run: |
           sudo apt-get update
-          sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-lang-spanish
+          sudo apt-get install -y \
+            texlive-latex-base \
+            texlive-latex-extra \
+            texlive-fonts-recommended \
+            texlive-fonts-extra \
+            texlive-lang-spanish \
+            cm-super \
+            dvipng
 
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
