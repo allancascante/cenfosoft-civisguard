@@ -42,6 +42,8 @@ jobs:
 
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          tinytex: true
 
       - name: Build consolidated QMD
         run: python scripts/build_docs_pdf.py
