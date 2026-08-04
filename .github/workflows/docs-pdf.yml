@@ -26,7 +26,7 @@ permissions:
 jobs:
   build:
     if: github.actor != 'github-actions[bot]'
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     steps:
       - name: Checkout
@@ -39,19 +39,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-
-      - name: Install TeX Live (Linux)
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            texlive-xetex \
-            texlive-latex-base \
-            texlive-latex-extra \
-            texlive-fonts-recommended \
-            texlive-fonts-extra \
-            texlive-lang-spanish \
-            fonts-dejavu \
-            fonts-liberation
 
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
