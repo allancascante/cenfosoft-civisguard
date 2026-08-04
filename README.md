@@ -40,11 +40,11 @@ Este repositorio contiene el **Documento de Arquitectura de Software (SAD)** y l
 ## Cronograma de Entregables (Evolución del Repositorio)
 El desarrollo arquitectónico se gestiona de manera incremental a través de las siguientes iteraciones semanales ([fuente](Especificación%20Proyecto%2002.pdf)):
 
-* [ ] **Semana 08 (Iteración 1):** Kick-off, Estilo Arquitectónico Macro, C4 Nivel 1 (Contexto) y primeros 2 ADRs ([fuente](Especificación%20Proyecto%2002.pdf)).
-* [ ] **Semana 09-10 (Iteración 2 & Review Board):** C4 Nivel 2 (Contenedores), Estrategia de Persistencia y sesión de retroalimentación con el cliente ([fuente](Especificación%20Proyecto%2002.pdf)).
-* [ ] **Semana 11 (Iteración 3):** C4 Nivel 3 (Componente Crítico) y propuesta ilustrada de patrones arquitectónicos/diseño ([fuente](Especificación%20Proyecto%2002.pdf)).
-* [ ] **Semana 12 (Inyección de Caos):** Mitigación del requerimiento sorpresa del negocio y ADR de impacto ([fuente](Especificación%20Proyecto%2002.pdf)).
-* [ ] **Semana 13-14 (Refinamiento y Defensa):** Consolidación final del documento SAD arc42 y Pitch Final ([fuente](Especificación%20Proyecto%2002.pdf)).
+* [x] **Semana 08 (Iteración 1):** Kick-off, Estilo Arquitectónico Macro, C4 Nivel 1 (Contexto) y primeros 2 ADRs ([fuente](Especificación%20Proyecto%2002.pdf)).
+* [x] **Semana 09-10 (Iteración 2 & Review Board):** C4 Nivel 2 (Contenedores), Estrategia de Persistencia y sesión de retroalimentación con el cliente ([fuente](Especificación%20Proyecto%2002.pdf)).
+* [x] **Semana 11 (Iteración 3):** C4 Nivel 3 (Componente Crítico) y propuesta ilustrada de patrones arquitectónicos/diseño ([fuente](Especificación%20Proyecto%2002.pdf)).
+* [x] **Semana 12 (Inyección de Caos):** Mitigación del requerimiento sorpresa del negocio y ADR de impacto ([fuente](Especificación%20Proyecto%2002.pdf)).
+* [x] **Semana 13-14 (Refinamiento y Defensa):** Consolidación final del documento SAD arc42 y Pitch Final ([fuente](Especificación%20Proyecto%2002.pdf)).
 
 ---
 

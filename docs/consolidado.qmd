@@ -1,8 +1,15 @@
 ---
-title: "Consolidado de Arquitectura (arc42 + docs)"
+title: "Consolidado de Arquitectura"
+subtitle: "CivisGuard Analytics: Sistema Nacional de Coordinación de Emergencias"
+author:
+  - "Cenfosoft: Gustavo Castro · David Cárdenas · Allan Cascante · Randy Villareal"
+  - "Maestría en Ingeniería de Software — PSWE-04"
+  - "Docente: M.Sc. Kevin A. Hernández Rostrán"
+date: "2026-08-03"
 lang: es
 format:
   pdf:
+    documentclass: scrartcl
     toc: true
     number-sections: true
     colorlinks: true
@@ -10,10 +17,48 @@ format:
       - margin=1in
 ---
 
-# Documento consolidado
+```{=latex}
+\begin{titlepage}
+\centering
+\vspace*{3cm}
+{\Huge\bfseries Consolidado de Arquitectura de Software\par}
+\vspace{1cm}
+{\Large\bfseries CivisGuard Analytics\par}
+\vspace{0.3cm}
+{\large Sistema Nacional de Coordinacion\par}
+{\large de Emergencias e Incidentes Institucionales\par}
+\vspace{3cm}
+{\large\bfseries Firma Consultora Cenfosoft\par}
+\vspace{0.5cm}
+{\normalsize Gustavo Castro · David Cardenas\par}
+{\normalsize Allan Cascante · Randy Villareal\par}
+\vspace{3cm}
+{\large\bfseries Maestria en Ingenieria de Software\par}
+\vspace{0.3cm}
+{\normalsize Curso: PSWE-04 --- Diseno de Sistemas de Software\par}
+{\normalsize Docente: M.Sc. Kevin A. Hernandez Rostran\par}
+\vspace{3cm}
+{\normalsize Periodo: Q02 2026\par}
+{\normalsize Fecha: 3 de agosto de 2026\par}
+\vfill
+{\small\textit{Documento generado automaticamente desde fuentes Markdown y Quarto}\par}
+\vspace{1cm}
+\end{titlepage}
+```
 
-Este PDF se genera automáticamente desde el contenido de la carpeta `docs`.
-La referencia base es el archivo arc42 en español.
+# Prefacio
+
+Este documento es un **consolidado automático** de la documentación de arquitectura de **CivisGuard Analytics**, generado a partir del contenido en la carpeta `docs/`.
+
+**Contenido:**
+- Documento de Arquitectura de Software (arc42 estándar)
+- Topología de Datos y Persistencia
+- Registros de Decisiones Arquitectónicas (ADRs)
+- Diagramas y modelos C4
+
+**Referencia base:** arc42 versión 9.0-ES (Hruschka & Starke, 2024)
+
+**Nota de cumplimiento:** Este documento se elaboró exclusivamente con fines académicos en el contexto de la Maestría en Ingeniería de Software. No constituye material de producción.
 
 \newpage
 
@@ -1613,7 +1658,7 @@ Evento `SolicitudDeApoyoEmitida` en Kafka, topics particionados por institución
 
 \newpage
 
-## Fuente: adrs/001-entorno-operativo.md
+## Fuente: adrs/0001-entorno-operativo.md
 
 # 1. Entorno Operativo
 

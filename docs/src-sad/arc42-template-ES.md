@@ -271,7 +271,7 @@ La división en contenedores separa canales de usuario, lógica operacional, pro
 | Capa geoespacial | PostGIS 3.4 + Redis GEO | Zonas de riesgo, recursos cercanos e incidentes activos. |
 | Archivo de evidencia | MinIO | Objetos, evidencia y exportaciones WORM. |
 
-### Interfaces importantes
+### Interfaces estratégicas
 
 - HTTPS/REST entre clientes y API Gateway.
 - REST/gRPC entre Gateway y servicios.
@@ -621,9 +621,15 @@ La seguridad es un concepto transversal obligatorio en toda la solución. Todos 
 - Registro auditable de validaciones y rechazos en bitácora inmutable.
 - Cumplimiento de segregación institucional y principio de mínimo privilegio.
 
-## *\<Otros conceptos transversales\>*
+## *Otros conceptos transversales*
 
-*\<Agregar aquí otros conceptos globales: observabilidad, resiliencia, versionado de eventos, etc.\>*
+Los siguientes conceptos están pendientes de desarrollo en iteraciones posteriores:
+
+- **Observabilidad distribuida:** trazas, métricas y logs centralizados con preservación de contexto de correlación.
+- **Versionado de eventos:** políticas de compatibilidad hacia atrás y evolución de contratos.
+- **Disaster Recovery y caos:** escenarios de recuperación, pruebas de caos y tiempos RPO/RTO verificables.
+- **Gobierno de datos y privacidad:** clasificación de datos, minimización y exportación segun legislación nacional vigente.
+- **Escalado y planificación de capacidad:** modelos de crecimiento, proyecciones de hardware y ventanas de mantenimiento.
 
 # Decisiones de Diseño
 
