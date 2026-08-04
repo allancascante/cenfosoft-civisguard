@@ -44,13 +44,14 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y \
+            texlive-xetex \
             texlive-latex-base \
             texlive-latex-extra \
             texlive-fonts-recommended \
             texlive-fonts-extra \
             texlive-lang-spanish \
-            cm-super \
-            dvipng
+            fonts-dejavu \
+            fonts-liberation
 
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
