@@ -1,6 +1,6 @@
-name: Build docs PDF (arc42 consolidated)
+name: Build docs PDF and presentation
 
-# Dispara cuando cambia algo en docs/ (excepto el PDF autogenerado),
+# Dispara cuando cambia algo en docs/ (excepto los archivos autogenerados),
 # el script de consolidacion o el propio workflow.
 # El bucle infinito se previene con dos mecanismos:
 #   1. El job solo corre si el actor NO es el bot de GitHub Actions.
@@ -24,7 +24,7 @@ permissions:
   contents: write
 
 jobs:
-  pdf:
+  build:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
 
@@ -40,7 +40,21 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Setup Quarto + TinyTeX
+      - name: Install TeX Live (Linux)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            texlive-xetex \
+            texlive-luatex \
+            texlive-latex-base \
+            texlive-latex-extra \
+            texlive-fonts-recommended \
+            texlive-lang-spanish \
+            lmodern \
+            cm-super \
+            dvipng
+
+      - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
           tinytex: true
@@ -48,28 +62,39 @@ jobs:
       - name: Build consolidated QMD
         run: python scripts/build_docs_pdf.py
 
-      - name: Render PDF
+      - name: Render PDF (consolidado.qmd)
         run: |
           cd docs
           quarto render consolidado.qmd --to pdf
-          mv consolidado.pdf consolidado-docs.pdf
+
+      - name: Render HTML presentation (defensa-arquitectura-civisguard.qmd)
+        run: |
+          cd docs
+          quarto render defensa-arquitectura-civisguard.qmd --to revealjs
 
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
         with:
-          name: consolidado-docs-pdf
-          path: docs/consolidado-docs.pdf
+          name: consolidado-pdf
+          path: docs/consolidado.pdf
           retention-days: 30
 
-      - name: Commit PDF and QMD to main
+      - name: Upload HTML presentation artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: defensa-html
+          path: docs/defensa-arquitectura-civisguard.html
+          retention-days: 30
+
+      - name: Commit PDF, HTML and QMD to main
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/consolidado-docs.pdf docs/consolidado.qmd
+          git add docs/consolidado.pdf docs/defensa-arquitectura-civisguard.html docs/consolidado.qmd
           if git diff --staged --quiet; then
-            echo "Sin cambios en el PDF consolidado."
+            echo "Sin cambios en los documentos generados."
           else
-            git commit -m "docs: actualizar PDF consolidado [skip ci]"
+            git commit -m "docs: actualizar PDF consolidado y presentaci\u00f3n HTML [skip ci]"
             git push
           fi

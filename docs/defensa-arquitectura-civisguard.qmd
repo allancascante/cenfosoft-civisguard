@@ -1,0 +1,247 @@
+---
+title: "Defensa de Arquitectura - CivisGuard Analytics"
+subtitle: "PSWE-04 · Maestría en Ingeniería de Software"
+author:
+  - "Cenfosoft: Gustavo Castro · David Cárdenas · Allan Cascante · Randy Villareal"
+date: "2026-08-03"
+lang: es
+format:
+  revealjs:
+    theme: moon
+    slide-number: true
+    chalkboard: false
+    controls: true
+    progress: true
+    transition: slide
+    incremental: true
+    toc: false
+    code-copy: false
+    embed-resources: true
+    width: 1366
+    height: 768
+    margin: 0.06
+---
+
+## Problema y objetivo
+
+**CivisGuard Analytics** responde a un reto país:
+
+- Coordinar 6 instituciones críticas en incidentes interinstitucionales.
+- Operar 24/7/365 con presión de tiempo real.
+- Convertir operación en inteligencia preventiva territorial.
+
+**Objetivo de arquitectura:** garantizar coordinación, trazabilidad y resiliencia bajo restricciones on-premise y cumplimiento legal costarricense.
+
+---
+
+## Contexto institucional
+
+Instituciones involucradas:
+
+1. Sistema 9-1-1  
+2. Fuerza Pública  
+3. CCSS  
+4. Cruz Roja  
+5. Bomberos  
+6. CNE
+
+Escala objetivo del RFP:
+
+- 1.200–2.000 usuarios concurrentes.
+- Hasta 80.000 incidentes/mes (expansión nacional).
+- Picos de 250 incidentes/minuto.
+
+---
+
+## Drivers de calidad (priorizados)
+
+1. **Disponibilidad:** operación continua y alta tolerancia a fallos.
+2. **Rendimiento operacional:** despacho de recursos críticos en segundos.
+3. **Integridad + auditoría:** trazabilidad completa e inmutable.
+4. **Seguridad:** segregación por institución, rol y contexto.
+5. **Resiliencia de conectividad:** estrategia offline-first en campo.
+6. **Evolutividad:** servicios desacoplados y escalado progresivo.
+
+---
+
+## Restricciones no negociables
+
+- Infraestructura **100% on-premise** ([ADR-001](adrs/0001-entorno-operativo.md)).
+- Acceso institucional por **VPN**.
+- Cumplimiento legal (8968, 7410, 8654, 8488, 8228, 9986).
+- Evitar dependencia de proveedor (prioridad a open source).
+- Conservación de bitácora verificable de largo plazo.
+
+**Implicación:** la arquitectura privilegia soberanía tecnológica y gobierno operacional del MGPSP.
+
+[Sección de Restricciones en arc42](src-sad/arc42-template-ES.md#restricciones-de-la-arquitectura)
+
+---
+
+## Decisión macro: EDA híbrida
+
+Se adopta un **estilo Event-Driven híbrido** ([ADR-0002](adrs/0002-arquitectura-orientada-al-analisis-de-datos.md)):
+
+- **Plano síncrono (operacional):** comandos críticos con respuesta inmediata.
+- **Plano asíncrono (eventos):** integración, proyecciones, auditoría y analítica.
+
+Ventaja clave: separar latencia operacional de cargas analíticas y de integración.
+
+---
+
+## C4 Nivel 1: Contexto del sistema
+
+![](c4-models/SystemContext-C4%20Nivel%201.drawio.png)
+
+[Abrir C4 Nivel 1 en grande](c4-models/SystemContext-C4%20Nivel%201.drawio.png) — [Sección 2.1 arc42](src-sad/arc42-template-ES.md#contexto-de-negocio)
+
+Contexto del sistema:
+
+- CivisGuard orquesta coordinación interinstitucional.
+- No reemplaza completamente sistemas existentes.
+- Expone vistas diferenciadas para operación, análisis y fiscalización.
+
+---
+
+## C4 Nivel 2: Contenedores
+
+![](c4-models/SystemContext-C4%20Nivel%202.drawio.png)
+
+[Abrir C4 Nivel 2 en grande](c4-models/SystemContext-C4%20Nivel%202.drawio.png) — [Sección 3 arc42](src-sad/arc42-template-ES.md#vista-de-bloques)
+
+Contenedores estratégicos:
+
+- API Gateway y seguridad de acceso (JWT + defensa in-depth).
+- Servicios de dominio (Incidentes, Despacho, CNE, Offline).
+- Bus de eventos Kafka para desacople temporal.
+- Persistencia políglota por bounded context.
+
+---
+
+## C4 Nivel 3: Componentes críticos
+
+![](c4-models/SystemContext-C4%20Nivel%203.drawio.png)
+
+[Abrir C4 Nivel 3 en grande](c4-models/SystemContext-C4%20Nivel%203.drawio.png) — [Sección 3 Nivel 3 arc42](src-sad/arc42-template-ES.md#nivel-3--servicio-de-despacho)
+
+Puntos de control:
+
+- Flujo de caso crítico extremo a extremo (Saga orquestada).
+- Publicación de eventos de dominio tras cambios confirmados (Transactional Outbox).
+- Componentes de sincronización y reconciliación para operación offline.
+
+---
+
+## ADRs clave y trade-offs
+
+- **[0001 Entorno Operativo](adrs/0001-entorno-operativo.md):** on-premise por soberanía y regulación.
+- **[0002 Arquitectura Orientada al Análisis](adrs/0002-arquitectura-orientada-al-analisis-de-datos.md):** híbrido operacional + analítico.
+- **[0003 Persistencia Políglota Distribuida](adrs/0003-persistencia-poliglota-distribuida.md):** database-per-service, open source.
+- **[0004 Control de Acceso por Institución](adrs/0004-control-de-acceso-basado-en-roles-por-institucion.md):** RBAC/ABAC + segregación.
+- **[0005 Protocolo de Apoyo Interinstitucional CNE](adrs/0005-protocolo-de-solicitud-de-apoyo-interinstitucional-cne.md):** coordinación formal.
+
+**Trade-off central:** mayor complejidad operativa para ganar resiliencia, cumplimiento y escalabilidad.
+
+---
+
+## Seguridad y cumplimiento
+
+Controles arquitectónicos ([arc42 Seguridad e Identidad](src-sad/arc42-template-ES.md#seguridad-e-identidad-federada-con-jwt)):
+
+**Identidad y autenticación:**
+  - JWT
+  - Segmentacion por `institucion`
+  - Zero trust interno
+
+**Autorización:**
+  - RBAC/ABAC con dominio institucional ([ADR-0004](adrs/0004-control-de-acceso-basado-en-roles-por-institucion.md))
+  - Eventos de Kafka transportan identidad en headers; consumidores validan
+  - RLS (Row-Level Security) nativa en PostgreSQL por `id institucion`
+
+**Auditoría:**
+  - Trazabilidad de extremo a extremo
+  - Integridad de bitácora
+  - Rechazo auditable de tokens inválidos
+
+**Perímetro:**
+  - Segmentación de red y canales sobre VPN.
+  - Gobierno de contratos e interoperabilidad entre instituciones.
+
+---
+
+## Resiliencia operacional
+
+Para campo y escenarios degradados ([Sección Escenario 3 arc42](src-sad/arc42-template-ES.md#escenario-3-operación-y-sincronización-offline)):
+
+- Captura local de eventos en SQLite (offline-first).
+- Sincronización diferida idempotente vía Kafka.
+- Estrategias de deduplicación (CRDT) y resolución de conflictos por agregado.
+- Reintentos con control de consistencia y correlación de eventos.
+
+**Resultado esperado:** continuidad del servicio aun con conectividad intermitente; convergencia eventual sin pérdida de efectos de negocio.
+
+---
+
+## Persistencia políglota distribuida
+
+**Database-per-service** ([ADR-0003](adrs/0003-persistencia-poliglota-distribuida.md)) optimiza cada contexto por su tipo de carga:
+
+| Contexto | Tecnología | Modelo | Justificación |
+|---|---|---|---|
+| Incidentes | PostgreSQL | ACID | Transacciones confiables, RLS nativa |
+| Despacho | PostgreSQL + Redis | Fuerte/eventual | Reservas ACID, cache <5s |
+| Bitácora | Kafka + PG append-only | Event Sourcing | Inmutabilidad, 5+ años retención |
+| Analítica | ClickHouse | Eventual/OLAP | Sub-segundo columnar en millones de registros |
+| Geoespacial | PostGIS + Redis GEO | Fuerte/cache | Índices espaciales + latencia ultra-baja |
+| IAM | Keycloak + PG | Fuerte | Revocación inmediata de acceso |
+| Offline | SQLite | Eventual | Local, CRDT, reconciliación |
+| Evidencia | MinIO WORM | Inmutable | Object Lock, verificación a largo plazo |
+
+**Ventaja clave:** cada tier escala e evoluciona independientemente. Fallos no son contagiosos.
+
+---
+
+## Topología de persistencia
+
+![](Topologia-datos-persistencia.md)
+
+[Abrir topología de datos y persistencia](Topologia-datos-persistencia.md) — [Sección 4 arc42](src-sad/arc42-template-ES.md#sección-4--topología-de-datos-y-persistencia)
+
+**Circuitos de datos:**
+
+1. Operacional → Kafka (event sourcing).
+2. Kafka → ClickHouse (CDC para analítica).
+3. Kafka → Redis/PostGIS (proyecciones de baja latencia).
+4. Kafka → Bitácora append-only (auditoría inmutable).
+5. Campo → SQLite (local) → Kafka (reconciliación).
+
+**Consistencia:**
+- Fuerte dentro de agregados (ACID local).
+- Eventual entre servicios (Saga + eventos).
+- Inmutable en bitácora (verificable a 5+ años).
+
+---
+
+## Riesgos arquitectónicos y mitigaciones
+
+| Riesgo | Impacto | Mitigación |
+|---|---|---|
+| Saturación en picos | Degradación operacional | particionado por dominio, colas y autoscaling on-prem |
+| Dependencia de integraciones externas | Retrasos en despacho | contratos versionados, timeout/fallback, compensaciones |
+| Complejidad EDA | Errores de consistencia | observabilidad, trazas distribuidas, pruebas de contrato |
+| Brechas de acceso | Riesgo legal y operativo | control de acceso por institución + auditoría continua |
+| Retención de datos | Almacenamiento y recuperación | MinIO WORM como archivo legal; Kafka con retención selectiva |
+
+---
+
+## Resumen del Diseño
+
+**La propuesta es viable, defendible y alineada al contexto país.**
+
+- Cumple restricciones reales del RFP.
+- Prioriza continuidad operativa y coordinación interinstitucional.
+- Soporta crecimiento nacional con control de riesgo técnico.
+
+### Cierre
+
+Arquitectura orientada a decisiones explícitas, trazables y auditables.
